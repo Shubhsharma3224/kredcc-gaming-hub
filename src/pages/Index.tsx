@@ -7,6 +7,7 @@ import VerifyPanel from "@/components/kredcc/VerifyPanel";
 import PlanCard from "@/components/kredcc/PlanCard";
 import LiveVisitors from "@/components/kredcc/LiveVisitors";
 import RecentOrders from "@/components/kredcc/RecentOrders";
+import FlashSale from "@/components/kredcc/FlashSale";
 import { GAME_DATA, GameKey, IMAGES, REVIEWS, TABS } from "@/lib/games";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -56,6 +57,9 @@ const Index = () => {
           </div>
         </div>
       </header>
+
+      {/* Flash Sale Bar */}
+      <FlashSale />
 
       {/* Hero */}
       <section id="top" className="container pt-10 pb-12 md:pt-16 md:pb-20 text-center relative">

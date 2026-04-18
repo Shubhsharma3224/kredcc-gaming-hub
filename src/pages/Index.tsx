@@ -7,6 +7,7 @@ import VerifyPanel from "@/components/kredcc/VerifyPanel";
 import PlanCard from "@/components/kredcc/PlanCard";
 import LiveVisitors from "@/components/kredcc/LiveVisitors";
 import RecentOrders from "@/components/kredcc/RecentOrders";
+import FlashSale from "@/components/kredcc/FlashSale";
 import { GAME_DATA, GameKey, IMAGES, REVIEWS, TABS } from "@/lib/games";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 

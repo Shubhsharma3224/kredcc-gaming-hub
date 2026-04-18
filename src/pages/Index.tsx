@@ -38,16 +38,19 @@ const Index = () => {
       {/* Header */}
       <header className="sticky top-0 z-40 w-full">
         <div className="container py-4">
-          <div className="glass-strong rounded-full px-5 py-2.5 flex items-center justify-between shadow-card">
-            <a href="#top" className="flex items-center gap-2.5">
-              <img src={IMAGES.logo} alt="KredCC logo" className="w-9 h-9 rounded-xl object-cover" />
+          <div className="glass-strong rounded-full px-5 py-2.5 flex items-center justify-between shadow-card hover:shadow-glow transition-all duration-500">
+            <a href="#top" className="flex items-center gap-2.5 group">
+              <div className="relative">
+                <div className="absolute inset-0 gradient-bg rounded-xl blur-md opacity-50 group-hover:opacity-80 transition-opacity" />
+                <img src={IMAGES.logo} alt="KredCC logo" className="relative w-9 h-9 rounded-xl object-cover" />
+              </div>
               <span className="font-extrabold text-lg tracking-tight">Kred<span className="gradient-text">CC</span></span>
             </a>
             <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
-              <a href="#games" className="hover:text-primary transition">Games</a>
-              <a href="#trust" className="hover:text-primary transition">Why Us</a>
-              <a href="#reviews" className="hover:text-primary transition">Reviews</a>
-              <a href="#faq" className="hover:text-primary transition">FAQ</a>
+              <a href="#games" className="hover:text-primary transition story-link">Games</a>
+              <a href="#trust" className="hover:text-primary transition story-link">Why Us</a>
+              <a href="#reviews" className="hover:text-primary transition story-link">Reviews</a>
+              <a href="#faq" className="hover:text-primary transition story-link">FAQ</a>
             </nav>
             <a href="#games" className="btn-gradient ripple text-sm font-semibold px-5 py-2.5">Top-Up Now</a>
           </div>
@@ -55,26 +58,37 @@ const Index = () => {
       </header>
 
       {/* Hero */}
-      <section id="top" className="container pt-10 pb-12 md:pt-16 md:pb-20 text-center">
+      <section id="top" className="container pt-10 pb-12 md:pt-16 md:pb-20 text-center relative">
         <div className="animate-hero-in">
-          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-semibold mb-6 hover:scale-105 transition">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             India's Fastest Gaming Top-Up · Live Now
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-balance">
             Premium Top-Ups for <br className="hidden md:block" />
-            <span className="gradient-text">Every Gamer.</span>
+            <span className="gradient-text inline-block">Every Gamer.</span>
           </h1>
-          <p className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             Instant delivery for WePlay, Jackaroo King, BGMI & Free Fire — at the lowest prices in India.
             Verified, secure and trusted by 50,000+ players.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a href="#games" className="btn-gradient ripple font-semibold px-7 py-3.5">⚡ Start Top-Up</a>
-            <a href="#reviews" className="glass-strong rounded-full font-semibold px-7 py-3.5 hover:scale-105 transition">⭐ See Reviews</a>
+            <a href="#reviews" className="glass-strong rounded-full font-semibold px-7 py-3.5 hover:scale-105 hover:shadow-glow transition-all duration-300">⭐ See Reviews</a>
+          </div>
+
+          {/* Trust badges row */}
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> Instant Delivery</div>
+            <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> 100% Secure Payment</div>
+            <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> 24/7 Live Support</div>
+            <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> Lowest Prices Guaranteed</div>
           </div>
         </div>
       </section>

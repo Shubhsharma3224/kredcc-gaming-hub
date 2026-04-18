@@ -5,6 +5,8 @@ import Reveal from "@/components/kredcc/Reveal";
 import Counter from "@/components/kredcc/Counter";
 import VerifyPanel from "@/components/kredcc/VerifyPanel";
 import PlanCard from "@/components/kredcc/PlanCard";
+import LiveVisitors from "@/components/kredcc/LiveVisitors";
+import RecentOrders from "@/components/kredcc/RecentOrders";
 import { GAME_DATA, GameKey, IMAGES, REVIEWS, TABS } from "@/lib/games";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -30,6 +32,8 @@ const Index = () => {
   return (
     <div className="relative min-h-screen">
       <Blobs />
+      <LiveVisitors />
+      <RecentOrders />
 
       {/* Header */}
       <header className="sticky top-0 z-40 w-full">

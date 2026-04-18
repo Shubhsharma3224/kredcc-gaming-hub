@@ -58,6 +58,9 @@ const Index = () => {
         </div>
       </header>
 
+      {/* Flash Sale Bar */}
+      <FlashSale />
+
       {/* Hero */}
       <section id="top" className="container pt-10 pb-12 md:pt-16 md:pb-20 text-center relative">
         <div className="animate-hero-in">

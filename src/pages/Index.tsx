@@ -144,7 +144,7 @@ const Index = () => {
               </Reveal>
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {section.plans.map((p, i) => (
-                  <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} />
+                  <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} game={active} />
                 ))}
               </div>
             </div>

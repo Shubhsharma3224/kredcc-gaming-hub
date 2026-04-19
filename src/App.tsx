@@ -10,6 +10,7 @@ import Refund from "./pages/Refund.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
+import Product from "./pages/Product.tsx";
 import SplashScreen from "./components/kredcc/SplashScreen.tsx";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/product/:slug" element={<Product />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

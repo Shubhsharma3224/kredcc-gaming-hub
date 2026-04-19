@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Star, Zap, ShieldCheck, Headphones, RefreshCcw, ChevronDown, MessageCircle, Send, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 import Blobs from "@/components/kredcc/Blobs";
 import Reveal from "@/components/kredcc/Reveal";
 import Counter from "@/components/kredcc/Counter";
@@ -252,11 +253,11 @@ const Index = () => {
               </div>
             </div>
             <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-muted-foreground">
-              <a href="#" className="hover:text-primary transition">Terms & Conditions</a>
-              <a href="#" className="hover:text-primary transition">Refund Policy</a>
-              <a href="#" className="hover:text-primary transition">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition">About Us</a>
-              <a href="#" className="hover:text-primary transition">Contact</a>
+              <Link to="/terms" className="hover:text-primary transition">Terms & Conditions</Link>
+              <Link to="/refund" className="hover:text-primary transition">Refund Policy</Link>
+              <Link to="/privacy" className="hover:text-primary transition">Privacy Policy</Link>
+              <Link to="/about" className="hover:text-primary transition">About Us</Link>
+              <Link to="/contact" className="hover:text-primary transition">Contact</Link>
             </nav>
             <div className="flex gap-3">
               {[

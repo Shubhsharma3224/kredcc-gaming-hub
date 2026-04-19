@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Star, Zap, ShieldCheck, Headphones, RefreshCcw, ChevronDown, MessageCircle, Send, Instagram } from "lucide-react";
+import { Star, Zap, ShieldCheck, Headphones, RefreshCcw, ChevronDown, Mail, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import Blobs from "@/components/kredcc/Blobs";
 import Reveal from "@/components/kredcc/Reveal";

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Check, ShieldCheck, Copy } from "lucide-react";
 import { GameKey, GAME_DATA } from "@/lib/games";
+import { supabase } from "@/integrations/supabase/client";
 
 type Props = {
   game: GameKey;
@@ -16,18 +17,39 @@ const VerifyPanel = ({ game, verified, onVerify }: Props) => {
   const [busy, setBusy] = useState(false);
   const [confetti, setConfetti] = useState(false);
 
-  const handleVerify = (e: React.FormEvent) => {
+  const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!id.trim()) return toast.error("Please enter your Game ID");
-    if (needsName && !name.trim()) return toast.error("Please enter your Name");
+    const trimmedId = id.trim();
+    const trimmedName = name.trim();
+    if (!trimmedId) return toast.error("Please enter your Game ID");
+    if (trimmedId.length < 3 || trimmedId.length > 64) {
+      return toast.error("Game ID must be 3–64 characters");
+    }
+    if (needsName && !trimmedName) return toast.error("Please enter your Name");
+    if (needsName && trimmedName.length > 64) {
+      return toast.error("Name is too long");
+    }
+
     setBusy(true);
-    setTimeout(() => {
-      setBusy(false);
+    try {
+      const { error } = await supabase.from("verifications").insert({
+        game,
+        game_id: trimmedId,
+        in_game_name: needsName ? trimmedName : null,
+        user_agent: navigator.userAgent.slice(0, 512),
+      });
+      if (error) throw error;
+
       setConfetti(true);
-      onVerify({ id: id.trim(), name: name.trim() });
+      onVerify({ id: trimmedId, name: trimmedName });
       toast.success("✅ ID Verified! Plans unlocked.");
       setTimeout(() => setConfetti(false), 1500);
-    }, 900);
+    } catch (err) {
+      console.error("Verification save failed", err);
+      toast.error("Could not save verification. Please try again.");
+    } finally {
+      setBusy(false);
+    }
   };
 
   const copyId = async () => {

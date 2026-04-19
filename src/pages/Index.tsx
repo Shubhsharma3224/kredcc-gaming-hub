@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Star, Zap, ShieldCheck, Headphones, RefreshCcw, ChevronDown, MessageCircle, Send, Instagram } from "lucide-react";
+import { Star, Zap, ShieldCheck, Headphones, RefreshCcw, ChevronDown, Mail, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import Blobs from "@/components/kredcc/Blobs";
 import Reveal from "@/components/kredcc/Reveal";
@@ -261,11 +261,10 @@ const Index = () => {
             </nav>
             <div className="flex gap-3">
               {[
-                { Icon: MessageCircle, label: "Discord" },
-                { Icon: Send, label: "Telegram" },
-                { Icon: Instagram, label: "Instagram" },
-              ].map(({ Icon, label }) => (
-                <a key={label} href="#" aria-label={label} className="w-10 h-10 rounded-full glass grid place-items-center hover:gradient-bg hover:text-primary-foreground transition">
+                { Icon: Mail, label: "Email", href: "mailto:fluxfindindia@gmail.com" },
+                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/lowestweplay" },
+              ].map(({ Icon, label, href }) => (
+                <a key={label} href={href} aria-label={label} className="w-10 h-10 rounded-full glass grid place-items-center hover:gradient-bg hover:text-primary-foreground transition">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}

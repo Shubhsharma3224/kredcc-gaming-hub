@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageLayout from "@/components/kredcc/PageLayout";
-import { Mail, MessageCircle, Send, Instagram, Phone, Clock } from "lucide-react";
+import { Mail, Instagram, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -34,11 +34,8 @@ const Contact = () => {
           <h2 className="text-xl font-bold text-foreground mb-2">Contact Channels</h2>
 
           {[
-            { icon: <Mail className="w-5 h-5" />, label: "Email", value: "support@kredcc.com", href: "mailto:support@kredcc.com" },
-            { icon: <Phone className="w-5 h-5" />, label: "WhatsApp", value: "+91 98765 43210", href: "https://wa.me/919876543210" },
-            { icon: <MessageCircle className="w-5 h-5" />, label: "Discord", value: "discord.gg/kredcc", href: "#" },
-            { icon: <Send className="w-5 h-5" />, label: "Telegram", value: "@kredcc_support", href: "#" },
-            { icon: <Instagram className="w-5 h-5" />, label: "Instagram", value: "@kredcc_official", href: "#" },
+            { icon: <Mail className="w-5 h-5" />, label: "Email", value: "fluxfindindia@gmail.com", href: "mailto:fluxfindindia@gmail.com" },
+            { icon: <Instagram className="w-5 h-5" />, label: "Instagram", value: "@lowestweplay", href: "https://instagram.com/lowestweplay" },
           ].map((c) => (
             <a
               key={c.label}

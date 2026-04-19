@@ -10,12 +10,14 @@ import Refund from "./pages/Refund.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
+import SplashScreen from "./components/kredcc/SplashScreen.tsx";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SplashScreen />
       <Toaster />
       <Sonner />
       <BrowserRouter>

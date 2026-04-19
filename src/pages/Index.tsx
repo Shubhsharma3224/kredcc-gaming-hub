@@ -261,11 +261,10 @@ const Index = () => {
             </nav>
             <div className="flex gap-3">
               {[
-                { Icon: MessageCircle, label: "Discord" },
-                { Icon: Send, label: "Telegram" },
-                { Icon: Instagram, label: "Instagram" },
-              ].map(({ Icon, label }) => (
-                <a key={label} href="#" aria-label={label} className="w-10 h-10 rounded-full glass grid place-items-center hover:gradient-bg hover:text-primary-foreground transition">
+                { Icon: Mail, label: "Email", href: "mailto:fluxfindindia@gmail.com" },
+                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/lowestweplay" },
+              ].map(({ Icon, label, href }) => (
+                <a key={label} href={href} aria-label={label} className="w-10 h-10 rounded-full glass grid place-items-center hover:gradient-bg hover:text-primary-foreground transition">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}

@@ -217,21 +217,21 @@ const Index = () => {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="container py-16 max-w-3xl">
+      <section id="faq" className="container py-12 md:py-16 max-w-3xl">
         <Reveal>
-          <h2 className="text-center text-3xl md:text-4xl font-extrabold">
+          <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-extrabold">
             Frequently asked <span className="gradient-text">questions</span>
           </h2>
         </Reveal>
         <Reveal delay={120}>
-          <div className="glass-strong rounded-[28px] p-2 md:p-4 mt-10 shadow-card">
+          <div className="glass-strong rounded-[24px] md:rounded-[28px] p-2 md:p-4 mt-6 md:mt-10 shadow-card">
             <Accordion type="single" collapsible className="w-full">
               {FAQS.map((f, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-b border-border last:border-0">
-                  <AccordionTrigger className="text-left font-semibold text-base px-4 hover:no-underline">
+                  <AccordionTrigger className="text-left font-semibold text-sm md:text-base px-3 md:px-4 hover:no-underline">
                     {f.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground px-4 pb-4">
+                  <AccordionContent className="text-sm text-muted-foreground px-3 md:px-4 pb-4">
                     {f.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -242,9 +242,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="container py-12">
-        <div className="glass-strong rounded-[28px] p-8 md:p-10 shadow-card">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <footer className="container py-10 md:py-12 pb-24 md:pb-12">
+        <div className="glass-strong rounded-[24px] md:rounded-[28px] p-6 md:p-10 shadow-card">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-6">
             <div className="flex items-center gap-3">
               <img src={IMAGES.logo} alt="KredCC" className="w-10 h-10 rounded-xl" />
               <div>
@@ -252,7 +252,7 @@ const Index = () => {
                 <p className="text-xs text-muted-foreground">India's Fastest Gaming Top-Up</p>
               </div>
             </div>
-            <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-muted-foreground">
+            <nav className="flex flex-wrap gap-x-4 md:gap-x-5 gap-y-2 text-xs md:text-sm font-medium text-muted-foreground">
               <Link to="/terms" className="hover:text-primary transition">Terms & Conditions</Link>
               <Link to="/refund" className="hover:text-primary transition">Refund Policy</Link>
               <Link to="/privacy" className="hover:text-primary transition">Privacy Policy</Link>
@@ -270,7 +270,7 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <div className="mt-8 pt-6 border-t border-border text-xs text-muted-foreground text-center space-y-1">
+          <div className="mt-6 md:mt-8 pt-5 md:pt-6 border-t border-border text-[11px] md:text-xs text-muted-foreground text-center space-y-1">
             <p>© 2025 KredCC — India's Fastest Gaming Top-Up. All rights reserved.</p>
             <p>Disclaimer: KredCC is an independent service and is not affiliated with, endorsed by, or sponsored by any game publisher.</p>
           </div>

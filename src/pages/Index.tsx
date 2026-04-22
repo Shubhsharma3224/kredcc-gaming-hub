@@ -99,29 +99,29 @@ const Index = () => {
       </section>
 
       {/* Trust */}
-      <section id="trust" className="container py-16">
+      <section id="trust" className="container py-12 md:py-16">
         <Reveal>
-          <h2 className="text-center text-3xl md:text-4xl font-extrabold">
+          <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-extrabold">
             Trusted by <span className="gradient-text">India's Gamers</span>
           </h2>
-          <p className="text-center text-muted-foreground mt-3">Real numbers, real trust.</p>
+          <p className="text-center text-sm md:text-base text-muted-foreground mt-2 md:mt-3">Real numbers, real trust.</p>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mt-6 md:mt-10">
           {[
-            { icon: <Zap className="w-6 h-6" />, value: 50000, suffix: "+", label: "Happy Customers" },
-            { icon: <ShieldCheck className="w-6 h-6" />, value: 100000, suffix: "+", label: "Orders Completed" },
-            { icon: <RefreshCcw className="w-6 h-6" />, value: 100, suffix: "%", label: "Instant Refund" },
-            { icon: <Headphones className="w-6 h-6" />, value: 24, suffix: "/7", label: "Live Support" },
+            { icon: <Zap className="w-5 h-5 md:w-6 md:h-6" />, value: 50000, suffix: "+", label: "Happy Customers" },
+            { icon: <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />, value: 100000, suffix: "+", label: "Orders Completed" },
+            { icon: <RefreshCcw className="w-5 h-5 md:w-6 md:h-6" />, value: 100, suffix: "%", label: "Instant Refund" },
+            { icon: <Headphones className="w-5 h-5 md:w-6 md:h-6" />, value: 24, suffix: "/7", label: "Live Support" },
           ].map((s, i) => (
             <Reveal key={s.label} delay={i * 80}>
-              <div className="glass-strong rounded-[28px] p-6 text-center hover:scale-[1.03] transition shadow-card">
-                <div className="w-12 h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow">
+              <div className="glass-strong rounded-[22px] md:rounded-[28px] p-4 md:p-6 text-center hover:scale-[1.03] transition shadow-card h-full">
+                <div className="w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow">
                   {s.icon}
                 </div>
-                <p className="mt-4 text-3xl md:text-4xl font-extrabold gradient-text">
+                <p className="mt-3 md:mt-4 text-2xl md:text-4xl font-extrabold gradient-text">
                   <Counter to={s.value} suffix={s.suffix} />
                 </p>
-                <p className="mt-1 text-sm font-medium text-muted-foreground">{s.label}</p>
+                <p className="mt-1 text-[11px] md:text-sm font-medium text-muted-foreground leading-tight">{s.label}</p>
               </div>
             </Reveal>
           ))}
@@ -129,9 +129,9 @@ const Index = () => {
       </section>
 
       {/* Games Section */}
-      <section id="games" className="container pb-16">
+      <section id="games" className="container pb-12 md:pb-16">
         {/* Tabs */}
-        <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center scrollbar-none">
+        <div className="flex gap-2 md:gap-3 overflow-x-auto pb-3 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center scrollbar-none snap-x snap-mandatory">
           {TABS.map((t, i) => {
             const isActive = active === t.key;
             return (

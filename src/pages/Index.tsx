@@ -139,13 +139,13 @@ const Index = () => {
                 key={t.key}
                 onClick={() => setActive(t.key)}
                 style={{ animationDelay: `${i * 80}ms` }}
-                className={`animate-slide-up shrink-0 flex items-center gap-3 px-5 py-3 rounded-full font-semibold text-sm transition-all ripple ${
+                className={`animate-slide-up shrink-0 snap-start flex items-center gap-2 md:gap-3 px-3.5 py-2.5 md:px-5 md:py-3 rounded-full font-semibold text-xs md:text-sm transition-all ripple ${
                   isActive
                     ? "btn-gradient shadow-glow scale-105"
                     : "glass hover:scale-105"
                 }`}
               >
-                <img src={t.logo} alt={t.name} className="w-7 h-7 rounded-lg object-cover" />
+                <img src={t.logo} alt={t.name} className="w-6 h-6 md:w-7 md:h-7 rounded-lg object-cover" />
                 <span>{t.name}</span>
               </button>
             );
@@ -153,7 +153,7 @@ const Index = () => {
         </div>
 
         {/* Verify */}
-        <div id="verify" className="mt-8 max-w-2xl mx-auto">
+        <div id="verify" className="mt-6 md:mt-8 max-w-2xl mx-auto">
           <VerifyPanel
             key={active}
             game={active}
@@ -163,16 +163,16 @@ const Index = () => {
         </div>
 
         {/* Plan Sections */}
-        <div className="mt-12 space-y-14">
+        <div className="mt-10 md:mt-12 space-y-10 md:space-y-14">
           {data.sections.map((section) => (
             <div key={section.title}>
               <Reveal>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-1.5 h-8 rounded-full gradient-bg" />
-                  <h2 className="text-2xl md:text-3xl font-extrabold">{section.title}</h2>
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <span className="w-1.5 h-7 md:h-8 rounded-full gradient-bg" />
+                  <h2 className="text-xl md:text-3xl font-extrabold">{section.title}</h2>
                 </div>
               </Reveal>
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {section.plans.map((p, i) => (
                   <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} game={active} />
                 ))}
@@ -183,28 +183,28 @@ const Index = () => {
       </section>
 
       {/* Reviews */}
-      <section id="reviews" className="container py-16">
+      <section id="reviews" className="container py-12 md:py-16">
         <Reveal>
-          <h2 className="text-center text-3xl md:text-4xl font-extrabold">
+          <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-extrabold">
             What players are <span className="gradient-text">saying</span>
           </h2>
         </Reveal>
-        <div className="mt-10 flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
+        <div className="mt-6 md:mt-10 flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-none">
           {REVIEWS.map((r, i) => (
             <Reveal key={r.name} delay={i * 60}>
-              <div className="glass-strong rounded-[28px] p-6 min-w-[280px] md:min-w-0 snap-start hover:scale-[1.02] transition shadow-card h-full">
+              <div className="glass-strong rounded-[24px] md:rounded-[28px] p-5 md:p-6 w-[78vw] sm:w-[60vw] md:w-auto md:min-w-0 snap-start hover:scale-[1.02] transition shadow-card h-full">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${r.color} grid place-items-center text-white font-bold text-lg shadow-soft`}>
+                  <div className={`w-11 h-11 md:w-12 md:h-12 shrink-0 rounded-full bg-gradient-to-br ${r.color} grid place-items-center text-white font-bold text-lg shadow-soft`}>
                     {r.name.charAt(0)}
                   </div>
-                  <div className="flex-1">
-                    <p className="font-bold">{r.name}</p>
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold truncate">{r.name}</p>
+                    <span className="inline-block text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
                       ✓ Verified Buyer
                     </span>
                   </div>
                 </div>
-                <div className="flex gap-0.5 mt-4">
+                <div className="flex gap-0.5 mt-3 md:mt-4">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}

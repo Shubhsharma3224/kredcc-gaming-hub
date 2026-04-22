@@ -39,14 +39,14 @@ const Index = () => {
 
       {/* Header */}
       <header className="sticky top-0 z-40 w-full">
-        <div className="container py-4">
-          <div className="glass-strong rounded-full px-5 py-2.5 flex items-center justify-between shadow-card hover:shadow-glow transition-all duration-500">
-            <a href="#top" className="flex items-center gap-2.5 group">
-              <div className="relative">
+        <div className="container py-3 md:py-4 px-3 sm:px-4">
+          <div className="glass-strong rounded-full pl-3 pr-2 py-2 md:px-5 md:py-2.5 flex items-center justify-between gap-2 shadow-card hover:shadow-glow transition-all duration-500">
+            <a href="#top" className="flex items-center gap-2 md:gap-2.5 group min-w-0">
+              <div className="relative shrink-0">
                 <div className="absolute inset-0 gradient-bg rounded-xl blur-md opacity-50 group-hover:opacity-80 transition-opacity" />
-                <img src={IMAGES.logo} alt="KredCC logo" className="relative w-9 h-9 rounded-xl object-cover" />
+                <img src={IMAGES.logo} alt="KredCC logo" className="relative w-8 h-8 md:w-9 md:h-9 rounded-xl object-cover" />
               </div>
-              <span className="font-extrabold text-lg tracking-tight">Kred<span className="gradient-text">CC</span></span>
+              <span className="font-extrabold text-base md:text-lg tracking-tight truncate">Kred<span className="gradient-text">CC</span></span>
             </a>
             <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
               <a href="#games" className="hover:text-primary transition story-link">Games</a>
@@ -54,7 +54,7 @@ const Index = () => {
               <a href="#reviews" className="hover:text-primary transition story-link">Reviews</a>
               <a href="#faq" className="hover:text-primary transition story-link">FAQ</a>
             </nav>
-            <a href="#games" className="btn-gradient ripple text-sm font-semibold px-5 py-2.5">Top-Up Now</a>
+            <a href="#games" className="btn-gradient ripple text-xs md:text-sm font-semibold px-3.5 py-2 md:px-5 md:py-2.5 shrink-0 whitespace-nowrap">Top-Up</a>
           </div>
         </div>
       </header>
@@ -63,30 +63,30 @@ const Index = () => {
       <FlashSale />
 
       {/* Hero */}
-      <section id="top" className="container pt-10 pb-12 md:pt-16 md:pb-20 text-center relative">
+      <section id="top" className="container pt-8 pb-10 md:pt-16 md:pb-20 text-center relative">
         <div className="animate-hero-in">
-          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-semibold mb-6 hover:scale-105 transition">
+          <div className="inline-flex items-center gap-2 glass px-3 py-1.5 md:px-4 rounded-full text-[11px] md:text-xs font-semibold mb-5 md:mb-6 hover:scale-105 transition">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             India's Fastest Gaming Top-Up · Live Now
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-balance">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] md:leading-[1.05] text-balance">
             Premium Top-Ups for <br className="hidden md:block" />
             <span className="gradient-text inline-block">Every Gamer.</span>
           </h1>
-          <p className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+          <p className="mt-4 md:mt-6 text-sm md:text-lg text-muted-foreground max-w-2xl mx-auto text-balance px-2">
             Instant delivery for WePlay, Jackaroo King, BGMI & Free Fire — at the lowest prices in India.
             Verified, secure and trusted by 50,000+ players.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#games" className="btn-gradient ripple font-semibold px-7 py-3.5">⚡ Start Top-Up</a>
-            <a href="#reviews" className="glass-strong rounded-full font-semibold px-7 py-3.5 hover:scale-105 hover:shadow-glow transition-all duration-300">⭐ See Reviews</a>
+          <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-2.5 md:gap-3">
+            <a href="#games" className="btn-gradient ripple font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base">⚡ Start Top-Up</a>
+            <a href="#reviews" className="glass-strong rounded-full font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base hover:scale-105 hover:shadow-glow transition-all duration-300">⭐ See Reviews</a>
           </div>
 
           {/* Trust badges row */}
-          <div className="mt-10 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
+          <div className="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 text-[11px] md:text-xs text-muted-foreground">
             <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> Instant Delivery</div>
             <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
             <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> 100% Secure Payment</div>

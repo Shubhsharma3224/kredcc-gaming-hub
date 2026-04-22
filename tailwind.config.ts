@@ -87,6 +87,7 @@ export default {
         "float-y": { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-10px)" } },
         "gradient-shift": { "0%,100%": { backgroundPosition: "0% 50%" }, "50%": { backgroundPosition: "100% 50%" } },
         "shimmer": { "0%": { backgroundPosition: "-200% 0" }, "100%": { backgroundPosition: "200% 0" } },
+        "counter-pop": { "0%": { transform: "scale(1)" }, "40%": { transform: "scale(1.18)" }, "70%": { transform: "scale(0.96)" }, "100%": { transform: "scale(1)" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -100,6 +101,7 @@ export default {
         "float-y": "float-y 6s ease-in-out infinite",
         "gradient-shift": "gradient-shift 5s ease infinite",
         "shimmer": "shimmer 2.5s linear infinite",
+        "counter-pop": "counter-pop 0.55s cubic-bezier(0.34,1.56,0.64,1) both",
       },
     },
   },

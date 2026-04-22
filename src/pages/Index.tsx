@@ -182,36 +182,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Trust */}
-      <section id="trust" className="container py-16">
-        <Reveal>
-          <h2 className="text-center text-3xl md:text-4xl font-extrabold">
-            Trusted by <span className="gradient-text">India's Gamers</span>
-          </h2>
-          <p className="text-center text-muted-foreground mt-3">Real numbers, real trust.</p>
-        </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-          {[
-            { icon: <Zap className="w-6 h-6" />, value: 50000, suffix: "+", label: "Happy Customers" },
-            { icon: <ShieldCheck className="w-6 h-6" />, value: 100000, suffix: "+", label: "Orders Completed" },
-            { icon: <RefreshCcw className="w-6 h-6" />, value: 100, suffix: "%", label: "Instant Refund" },
-            { icon: <Headphones className="w-6 h-6" />, value: 24, suffix: "/7", label: "Live Support" },
-          ].map((s, i) => (
-            <Reveal key={s.label} delay={i * 80}>
-              <div className="glass-strong rounded-[28px] p-6 text-center hover:scale-[1.03] transition shadow-card">
-                <div className="w-12 h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow">
-                  {s.icon}
-                </div>
-                <p className="mt-4 text-3xl md:text-4xl font-extrabold gradient-text">
-                  <Counter to={s.value} suffix={s.suffix} />
-                </p>
-                <p className="mt-1 text-sm font-medium text-muted-foreground">{s.label}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* Reviews */}
       <section id="reviews" className="container py-16">
         <Reveal>

@@ -29,6 +29,7 @@ const showOrderToast = () => {
   const city = pick(CITIES);
   const plan = pick(PLANS);
   const minsAgo = Math.floor(Math.random() * 5) + 1;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
   toast(
     <div className="flex items-start gap-3">
@@ -47,7 +48,7 @@ const showOrderToast = () => {
         </p>
       </div>
     </div>,
-    { duration: 5000, position: "bottom-right" }
+    { duration: 4500, position: isMobile ? "top-center" : "bottom-right" }
   );
 };
 

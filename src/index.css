@@ -194,6 +194,18 @@
 @layer utilities {
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Hide scrollbars on horizontal scroll rows */
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  /* Respect iOS safe-area on fixed bottom widgets */
+  .safe-bottom { bottom: calc(1rem + env(safe-area-inset-bottom)); }
+
+  /* Prevent iOS auto-zoom on focus by ensuring 16px font on inputs */
+  @media (max-width: 640px) {
+    input, textarea, select { font-size: 16px !important; }
+  }
 }
 
 @keyframes shimmer {

@@ -118,8 +118,8 @@ const Index = () => {
                 <div className="w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow">
                   {s.icon}
                 </div>
-                <p className="mt-3 md:mt-4 text-2xl md:text-4xl font-extrabold gradient-text">
-                  <Counter to={s.value} suffix={s.suffix} />
+                <p className="mt-3 md:mt-4 text-2xl md:text-4xl font-extrabold">
+                  <Counter to={s.value} suffix={s.suffix} className="gradient-text" />
                 </p>
                 <p className="mt-1 text-[11px] md:text-sm font-medium text-muted-foreground leading-tight">{s.label}</p>
               </div>

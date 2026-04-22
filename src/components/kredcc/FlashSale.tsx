@@ -91,7 +91,7 @@ const FlashSale = () => {
   return (
     <section className="container pt-2 pb-2">
       <div
-        className="relative overflow-hidden rounded-[28px] p-5 md:p-6 shadow-card"
+        className="relative overflow-hidden rounded-[24px] md:rounded-[28px] p-4 md:p-6 shadow-card"
         style={{
           background: "linear-gradient(135deg, hsl(14 95% 55%), hsl(0 90% 58%), hsl(28 95% 55%))",
           backgroundSize: "200% 200%",
@@ -112,53 +112,56 @@ const FlashSale = () => {
         <div aria-hidden className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-yellow-300/40 blur-3xl" />
         <div aria-hidden className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-rose-500/40 blur-3xl" />
 
-        <div className="relative grid md:grid-cols-[auto_1fr_auto] items-center gap-5">
-          {/* Left: Badge */}
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 shrink-0 rounded-2xl bg-white/20 backdrop-blur-sm grid place-items-center border border-white/30 animate-pulse-glow">
-              <Flame className="w-6 h-6 text-white" />
-            </div>
-            <div className="text-white">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest bg-white text-rose-600 px-2 py-0.5 rounded-full">
-                  Flash Sale
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-yellow-300 text-rose-700 px-2 py-0.5 rounded-full flex items-center gap-1">
-                  <Zap className="w-2.5 h-2.5 fill-rose-700" /> Live
-                </span>
+        <div className="relative grid gap-4 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-5">
+          {/* Top row on mobile: Badge + Countdown */}
+          <div className="flex items-center justify-between gap-3 md:contents">
+            {/* Badge */}
+            <div className="flex items-center gap-2.5 md:gap-3 min-w-0">
+              <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-2xl bg-white/20 backdrop-blur-sm grid place-items-center border border-white/30 animate-pulse-glow">
+                <Flame className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
-              <p className="mt-1 text-xl md:text-2xl font-extrabold leading-tight">
-                70% OFF <span className="font-medium text-white/90 text-sm md:text-base">— ends in</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Middle: Countdown */}
-          <div className="flex items-center justify-center gap-2 md:gap-3">
-            {[
-              { v: pad(hours), l: "Hrs" },
-              { v: pad(minutes), l: "Min" },
-              { v: pad(seconds), l: "Sec" },
-            ].map((t, i) => (
-              <div key={t.l} className="flex items-center gap-2 md:gap-3">
-                <div className="bg-white/95 backdrop-blur rounded-2xl px-3 py-2 md:px-4 md:py-2.5 min-w-[58px] md:min-w-[72px] text-center shadow-lg">
-                  <div className="text-2xl md:text-3xl font-extrabold tabular-nums leading-none text-rose-600">
-                    {t.v}
-                  </div>
-                  <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-rose-500/80 mt-0.5">
-                    {t.l}
-                  </div>
+              <div className="text-white min-w-0">
+                <div className="flex items-center gap-1.5 md:gap-2 flex-wrap">
+                  <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest bg-white text-rose-600 px-1.5 md:px-2 py-0.5 rounded-full">
+                    Flash Sale
+                  </span>
+                  <span className="hidden sm:flex text-[10px] font-bold uppercase tracking-wider bg-yellow-300 text-rose-700 px-2 py-0.5 rounded-full items-center gap-1">
+                    <Zap className="w-2.5 h-2.5 fill-rose-700" /> Live
+                  </span>
                 </div>
-                {i < 2 && <span className="text-white text-2xl md:text-3xl font-extrabold animate-pulse">:</span>}
+                <p className="mt-1 text-base md:text-2xl font-extrabold leading-tight">
+                  70% OFF <span className="hidden md:inline font-medium text-white/90 text-sm md:text-base">— ends in</span>
+                </p>
               </div>
-            ))}
+            </div>
+
+            {/* Countdown */}
+            <div className="flex items-center justify-center gap-1.5 md:gap-3 shrink-0">
+              {[
+                { v: pad(hours), l: "Hrs" },
+                { v: pad(minutes), l: "Min" },
+                { v: pad(seconds), l: "Sec" },
+              ].map((t, i) => (
+                <div key={t.l} className="flex items-center gap-1.5 md:gap-3">
+                  <div className="bg-white/95 backdrop-blur rounded-xl md:rounded-2xl px-2 py-1.5 md:px-4 md:py-2.5 min-w-[42px] md:min-w-[72px] text-center shadow-lg">
+                    <div className="text-lg md:text-3xl font-extrabold tabular-nums leading-none text-rose-600">
+                      {t.v}
+                    </div>
+                    <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-rose-500/80 mt-0.5">
+                      {t.l}
+                    </div>
+                  </div>
+                  {i < 2 && <span className="text-white text-base md:text-3xl font-extrabold animate-pulse">:</span>}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right: Stock progress */}
-          <div className="text-white min-w-[200px] md:min-w-[240px]">
+          {/* Stock progress (full width below on mobile) */}
+          <div className="text-white md:min-w-[240px]">
             <div className="flex items-center justify-between text-[11px] md:text-xs font-semibold mb-1.5">
               <span className="opacity-90">
-                Sold today: <span className="font-extrabold tabular-nums">{state.sold}</span>
+                Sold: <span className="font-extrabold tabular-nums">{state.sold}</span>
               </span>
               <span
                 className={`px-2 py-0.5 rounded-full font-extrabold tabular-nums ${
@@ -168,7 +171,7 @@ const FlashSale = () => {
                 Only {left} left!
               </span>
             </div>
-            <div className="h-2.5 rounded-full bg-white/25 overflow-hidden relative">
+            <div className="h-2 md:h-2.5 rounded-full bg-white/25 overflow-hidden relative">
               <div
                 className="h-full rounded-full relative transition-all duration-700 ease-out"
                 style={{
@@ -181,7 +184,7 @@ const FlashSale = () => {
               />
             </div>
             <p className="mt-1.5 text-[10px] md:text-[11px] text-white/90 font-medium">
-              🔥 Hurry! {Math.round(percent)}% claimed — offer auto-resets when timer ends.
+              🔥 {Math.round(percent)}% claimed — auto-resets when timer ends.
             </p>
           </div>
         </div>

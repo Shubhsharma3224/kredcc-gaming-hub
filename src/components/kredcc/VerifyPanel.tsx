@@ -108,12 +108,13 @@ const VerifyPanel = ({ game, verified, onVerify }: Props) => {
                 onChange={(e) => setId(e.target.value)}
                 placeholder=" "
                 autoComplete="off"
+                className="!pr-12"
               />
               <label htmlFor="game-id">Game ID</label>
               <button
                 type="button"
                 onClick={copyId}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-xl hover:bg-muted transition"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl hover:bg-muted transition"
                 aria-label="Copy ID"
               >
                 <Copy className="w-4 h-4 text-muted-foreground" />

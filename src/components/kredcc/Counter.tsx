@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const Counter = ({ to, suffix = "", duration = 2000 }: { to: number; suffix?: string; duration?: number }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const [val, setVal] = useState(0);
+  const [done, setDone] = useState(false);
   const started = useRef(false);
   useEffect(() => {
     const el = ref.current;
@@ -15,7 +16,12 @@ const Counter = ({ to, suffix = "", duration = 2000 }: { to: number; suffix?: st
           const p = Math.min((t - start) / duration, 1);
           const eased = 1 - Math.pow(1 - p, 3);
           setVal(Math.floor(eased * to));
-          if (p < 1) requestAnimationFrame(tick);
+          if (p < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            setVal(to);
+            setDone(true);
+          }
         };
         requestAnimationFrame(tick);
       }
@@ -23,6 +29,10 @@ const Counter = ({ to, suffix = "", duration = 2000 }: { to: number; suffix?: st
     io.observe(el);
     return () => io.disconnect();
   }, [to, duration]);
-  return <span ref={ref}>{val.toLocaleString()}{suffix}</span>;
+  return (
+    <span ref={ref} className={`inline-block ${done ? "animate-counter-pop" : ""}`}>
+      {val.toLocaleString()}{suffix}
+    </span>
+  );
 };
 export default Counter;

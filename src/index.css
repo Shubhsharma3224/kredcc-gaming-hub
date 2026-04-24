@@ -311,6 +311,18 @@
   0% { transform: translateY(0) rotate(0); opacity: 1; }
   100% { transform: translateY(-200px) rotate(720deg); opacity: 0; }
 }
+@keyframes shine-sweep {
+  0% { transform: translateX(-120%) rotate(18deg); }
+  60%, 100% { transform: translateX(350%) rotate(18deg); }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes tilt-glow {
+  0%, 100% { transform: perspective(800px) rotateX(0) rotateY(0); }
+  50% { transform: perspective(800px) rotateX(1.5deg) rotateY(-1.5deg); }
+}
 
 /* ============ Splash screen animations ============ */
 @keyframes splash-out {

@@ -65,12 +65,12 @@ const Index = () => {
       {/* Hero */}
       <section id="top" className="container pt-8 pb-10 md:pt-16 md:pb-20 text-center relative">
         <div className="animate-hero-in">
-          <div className="inline-flex items-center gap-2 glass px-3 py-1.5 md:px-4 rounded-full text-[11px] md:text-xs font-semibold mb-5 md:mb-6 hover:scale-105 transition">
+          <div className="inline-flex items-center gap-2 glass-strong px-3 py-1.5 md:px-4 rounded-full text-[11px] md:text-xs font-semibold mb-5 md:mb-6 hover:scale-105 transition shine-overlay">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            India's Fastest Gaming Top-Up · Live Now
+            <span>India's Fastest Gaming Top-Up · Live Now</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] md:leading-[1.05] text-balance">
             Premium Top-Ups for <br className="hidden md:block" />
@@ -85,15 +85,31 @@ const Index = () => {
             <a href="#reviews" className="glass-strong rounded-full font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base hover:scale-105 hover:shadow-glow transition-all duration-300">⭐ See Reviews</a>
           </div>
 
+          {/* Premium trust row */}
+          <div className="mt-7 md:mt-9 flex flex-wrap justify-center items-center gap-2 md:gap-3">
+            <span className="trust-badge">
+              <span>🏆</span> Trusted Since 2022
+            </span>
+            <span className="trust-badge">
+              <span>🔒</span> 256-bit Secured
+            </span>
+            <span className="trust-badge">
+              <span>⚡</span> 1-Min Delivery
+            </span>
+            <span className="trust-badge">
+              <span>💰</span> Lowest Prices
+            </span>
+          </div>
+
           {/* Trust badges row */}
-          <div className="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 text-[11px] md:text-xs text-muted-foreground">
-            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> Instant Delivery</div>
+          <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 text-[11px] md:text-xs text-muted-foreground">
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> Instant Delivery</div>
             <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
-            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> 100% Secure Payment</div>
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> 100% Secure Payment</div>
             <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
-            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> 24/7 Live Support</div>
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> 24/7 Live Support</div>
             <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
-            <div className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> Lowest Prices Guaranteed</div>
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> Lowest Prices Guaranteed</div>
           </div>
         </div>
       </section>

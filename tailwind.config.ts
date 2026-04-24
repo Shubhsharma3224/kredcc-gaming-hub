@@ -91,6 +91,9 @@ export default {
         "gradient-shift": { "0%,100%": { backgroundPosition: "0% 50%" }, "50%": { backgroundPosition: "100% 50%" } },
         "shimmer": { "0%": { backgroundPosition: "-200% 0" }, "100%": { backgroundPosition: "200% 0" } },
         "counter-pop": { "0%": { transform: "scale(1)" }, "40%": { transform: "scale(1.18)" }, "70%": { transform: "scale(0.96)" }, "100%": { transform: "scale(1)" } },
+        "sparkle-twinkle": { "0%,100%": { opacity: "0", transform: "scale(0.6) rotate(0deg)" }, "50%": { opacity: "0.9", transform: "scale(1.2) rotate(180deg)" } },
+        "float-slow": { "0%,100%": { transform: "translateY(0) rotate(0deg)" }, "50%": { transform: "translateY(-14px) rotate(2deg)" } },
+        "glow-pulse-soft": { "0%,100%": { boxShadow: "0 0 0 0 hsl(262 88% 62% / 0.4)" }, "50%": { boxShadow: "0 0 30px 8px hsl(292 90% 60% / 0.25)" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

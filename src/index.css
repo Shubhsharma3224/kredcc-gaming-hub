@@ -6,40 +6,42 @@
 
 @layer base {
   :root {
-    --background: 240 30% 98%;
-    --foreground: 240 20% 12%;
+    --background: 250 40% 98.5%;
+    --foreground: 240 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 20% 12%;
+    --card-foreground: 240 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 20% 12%;
+    --popover-foreground: 240 25% 10%;
 
-    --primary: 250 84% 60%;
+    --primary: 252 88% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 60% 96%;
-    --secondary-foreground: 250 60% 30%;
+    --secondary: 270 65% 96%;
+    --secondary-foreground: 252 70% 28%;
 
-    --muted: 240 20% 96%;
-    --muted-foreground: 240 10% 45%;
+    --muted: 245 25% 96%;
+    --muted-foreground: 240 12% 42%;
 
-    --accent: 290 80% 60%;
+    --accent: 292 88% 58%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 20% 90%;
-    --input: 240 20% 92%;
-    --ring: 250 84% 60%;
+    --border: 245 25% 90%;
+    --input: 245 25% 92%;
+    --ring: 252 88% 58%;
 
     --radius: 1.75rem;
 
-    /* Brand gradient stops */
-    --grad-1: 234 89% 66%;   /* #6366f1 indigo */
-    --grad-2: 262 83% 64%;   /* #8b5cf6 violet */
-    --grad-3: 292 84% 61%;   /* #d946ef fuchsia */
+    /* Brand gradient stops — richer, deeper, more premium */
+    --grad-1: 232 92% 62%;   /* deep indigo */
+    --grad-2: 262 88% 62%;   /* royal violet */
+    --grad-3: 292 90% 60%;   /* vibrant fuchsia */
+    --grad-4: 212 95% 60%;   /* electric blue accent */
+    --grad-gold: 42 95% 58%; /* premium gold */
 
     --gradient-primary: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)), hsl(var(--grad-3)));
     --gradient-primary-anim: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)), hsl(var(--grad-3)), hsl(var(--grad-1)));

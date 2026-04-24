@@ -131,9 +131,10 @@ const Index = () => {
             { icon: <Headphones className="w-5 h-5 md:w-6 md:h-6" />, value: 24, suffix: "/7", label: "Live Support" },
           ].map((s, i) => (
             <Reveal key={s.label} delay={i * 80}>
-              <div className="relative glass-strong rounded-[22px] md:rounded-[28px] p-4 md:p-6 text-center hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 shadow-card hover:shadow-premium h-full overflow-hidden group">
-                <div aria-hidden className="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" style={{ background: "var(--gradient-primary)" }} />
-                <div className="relative w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow group-hover:scale-110 transition-transform duration-500">
+              <div className="relative premium-card rounded-[22px] md:rounded-[28px] p-4 md:p-6 text-center h-full overflow-hidden group">
+                <div aria-hidden className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-60 transition-all duration-700 blur-3xl" style={{ background: "var(--gradient-primary)" }} />
+                <div aria-hidden className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "linear-gradient(135deg, hsl(var(--grad-1) / 0.08), hsl(var(--grad-3) / 0.08))" }} />
+                <div className="relative w-11 h-11 md:w-14 md:h-14 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   {s.icon}
                 </div>
                 <p className="relative mt-3 md:mt-4 text-2xl md:text-4xl font-extrabold">

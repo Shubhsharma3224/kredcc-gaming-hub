@@ -157,47 +157,50 @@ const Index = () => {
               <button
                 key={t.key}
                 onClick={() => setActive(t.key)}
-                style={{ animationDelay: `${i * 80}ms` }}
-                className={`animate-slide-up shrink-0 snap-start flex items-center gap-2 md:gap-3 px-3.5 py-2.5 md:px-5 md:py-3 rounded-full font-semibold text-xs md:text-sm transition-all ripple ${
+                style={{ animationDelay: `${i * 110}ms` }}
+                className={`tab-enter shrink-0 snap-start flex items-center gap-2 md:gap-3 px-3.5 py-2.5 md:px-5 md:py-3 rounded-full font-semibold text-xs md:text-sm ripple transition-all duration-500 ease-out ${
                   isActive
-                    ? "btn-gradient shadow-glow scale-105"
-                    : "glass hover:scale-105"
+                    ? "btn-gradient scale-105 tab-active-glow"
+                    : "glass hover:scale-105 hover:shadow-soft"
                 }`}
+                aria-pressed={isActive}
               >
-                <img src={t.logo} alt={t.name} className="w-6 h-6 md:w-7 md:h-7 rounded-lg object-cover" />
+                <img src={t.logo} alt={t.name} className={`w-6 h-6 md:w-7 md:h-7 rounded-lg object-cover transition-transform duration-500 ${isActive ? "scale-110" : ""}`} />
                 <span>{t.name}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Verify */}
-        <div id="verify" className="mt-6 md:mt-8 max-w-2xl mx-auto">
-          <VerifyPanel
-            key={active}
-            game={active}
-            verified={isVerified}
-            onVerify={() => setVerified((v) => ({ ...v, [active]: true }))}
-          />
-        </div>
+        {/* Cross-fade content wrapper — keyed on active game */}
+        <div key={active} className="content-crossfade">
+          {/* Verify */}
+          <div id="verify" className="mt-6 md:mt-8 max-w-2xl mx-auto">
+            <VerifyPanel
+              game={active}
+              verified={isVerified}
+              onVerify={() => setVerified((v) => ({ ...v, [active]: true }))}
+            />
+          </div>
 
-        {/* Plan Sections */}
-        <div className="mt-10 md:mt-12 space-y-10 md:space-y-14">
-          {data.sections.map((section) => (
-            <div key={section.title}>
-              <Reveal>
-                <div className="flex items-center gap-3 mb-4 md:mb-6">
-                  <span className="w-1.5 h-7 md:h-8 rounded-full gradient-bg" />
-                  <h2 className="text-xl md:text-3xl font-extrabold">{section.title}</h2>
+          {/* Plan Sections */}
+          <div className="mt-10 md:mt-12 space-y-10 md:space-y-14">
+            {data.sections.map((section) => (
+              <div key={section.title}>
+                <Reveal>
+                  <div className="flex items-center gap-3 mb-4 md:mb-6">
+                    <span className="w-1.5 h-7 md:h-8 rounded-full gradient-bg" />
+                    <h2 className="text-xl md:text-3xl font-extrabold">{section.title}</h2>
+                  </div>
+                </Reveal>
+                <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {section.plans.map((p, i) => (
+                    <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} game={active} />
+                  ))}
                 </div>
-              </Reveal>
-              <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {section.plans.map((p, i) => (
-                  <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} game={active} />
-                ))}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

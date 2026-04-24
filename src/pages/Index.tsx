@@ -117,10 +117,13 @@ const Index = () => {
       {/* Trust */}
       <section id="trust" className="container py-12 md:py-16">
         <Reveal>
-          <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-extrabold">
-            Trusted by <span className="gradient-text">India's Gamers</span>
-          </h2>
-          <p className="text-center text-sm md:text-base text-muted-foreground mt-2 md:mt-3">Real numbers, real trust.</p>
+          <div className="text-center">
+            <span className="trust-badge mb-3"><span>✨</span> Proven Track Record</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-3">
+              Trusted by <span className="gradient-text">India's Gamers</span>
+            </h2>
+            <p className="text-sm md:text-base text-muted-foreground mt-2 md:mt-3">Real numbers, real trust — built over years of instant service.</p>
+          </div>
         </Reveal>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mt-6 md:mt-10">
           {[
@@ -130,14 +133,15 @@ const Index = () => {
             { icon: <Headphones className="w-5 h-5 md:w-6 md:h-6" />, value: 24, suffix: "/7", label: "Live Support" },
           ].map((s, i) => (
             <Reveal key={s.label} delay={i * 80}>
-              <div className="glass-strong rounded-[22px] md:rounded-[28px] p-4 md:p-6 text-center hover:scale-[1.03] transition shadow-card h-full">
-                <div className="w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow">
+              <div className="relative glass-strong rounded-[22px] md:rounded-[28px] p-4 md:p-6 text-center hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 shadow-card hover:shadow-premium h-full overflow-hidden group">
+                <div aria-hidden className="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" style={{ background: "var(--gradient-primary)" }} />
+                <div className="relative w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl gradient-bg grid place-items-center text-primary-foreground shadow-glow group-hover:scale-110 transition-transform duration-500">
                   {s.icon}
                 </div>
-                <p className="mt-3 md:mt-4 text-2xl md:text-4xl font-extrabold">
+                <p className="relative mt-3 md:mt-4 text-2xl md:text-4xl font-extrabold">
                   <Counter to={s.value} suffix={s.suffix} className="gradient-text" />
                 </p>
-                <p className="mt-1 text-[11px] md:text-sm font-medium text-muted-foreground leading-tight">{s.label}</p>
+                <p className="relative mt-1 text-[11px] md:text-sm font-semibold text-muted-foreground leading-tight">{s.label}</p>
               </div>
             </Reveal>
           ))}

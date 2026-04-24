@@ -72,8 +72,11 @@ export default {
       },
       boxShadow: {
         glow: "var(--shadow-glow)",
+        "glow-lg": "var(--shadow-glow-lg)",
+        "glow-gold": "var(--shadow-glow-gold)",
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",
+        premium: "var(--shadow-premium)",
       },
       keyframes: {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },

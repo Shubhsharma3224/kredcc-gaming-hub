@@ -211,7 +211,7 @@ const Index = () => {
         <div className="mt-6 md:mt-10 flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-none">
           {REVIEWS.map((r, i) => (
             <Reveal key={r.name} delay={i * 60}>
-              <div className="glass-strong rounded-[24px] md:rounded-[28px] p-5 md:p-6 w-[78vw] sm:w-[60vw] md:w-auto md:min-w-0 snap-start hover:scale-[1.02] transition shadow-card h-full">
+              <div className="premium-card rounded-[24px] md:rounded-[28px] p-5 md:p-6 w-[78vw] sm:w-[60vw] md:w-auto md:min-w-0 snap-start h-full">
                 <div className="flex items-center gap-3">
                   <div className={`w-11 h-11 md:w-12 md:h-12 shrink-0 rounded-full bg-gradient-to-br ${r.color} grid place-items-center text-white font-bold text-lg shadow-soft`}>
                     {r.name.charAt(0)}

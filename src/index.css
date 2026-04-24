@@ -409,6 +409,18 @@
   0%, 100% { transform: perspective(800px) rotateX(0) rotateY(0); }
   50% { transform: perspective(800px) rotateX(1.5deg) rotateY(-1.5deg); }
 }
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 0.9; transform: scale(1.2) rotate(180deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+@keyframes glow-pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--grad-2) / 0.4); }
+  50% { box-shadow: 0 0 30px 8px hsl(var(--grad-3) / 0.25); }
+}
 
 /* ============ Splash screen animations ============ */
 @keyframes splash-out {

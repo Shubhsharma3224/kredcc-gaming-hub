@@ -422,6 +422,29 @@
   50% { box-shadow: 0 0 30px 8px hsl(var(--grad-3) / 0.25); }
 }
 
+/* ============ Game tab + content transitions ============ */
+@keyframes tab-enter {
+  0% { opacity: 0; transform: translateY(16px) scale(0.94); filter: blur(4px); }
+  60% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes tab-active-glow {
+  0%, 100% {
+    box-shadow: 0 10px 30px -8px hsl(var(--grad-2) / 0.55), 0 0 0 0 hsl(var(--grad-3) / 0.45);
+  }
+  50% {
+    box-shadow: 0 18px 50px -10px hsl(var(--grad-2) / 0.7), 0 0 24px 6px hsl(var(--grad-3) / 0.35);
+  }
+}
+@keyframes content-crossfade {
+  0% { opacity: 0; transform: translateY(14px) scale(0.985); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.tab-enter { animation: tab-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.tab-active-glow { animation: tab-active-glow 2.6s ease-in-out infinite; }
+.content-crossfade { animation: content-crossfade 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
 /* ============ Splash screen animations ============ */
 @keyframes splash-out {
   0% { opacity: 1; transform: scale(1); }

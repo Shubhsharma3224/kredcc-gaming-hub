@@ -48,7 +48,7 @@ const showOrderToast = () => {
         </p>
       </div>
     </div>,
-    { duration: 4500, position: isMobile ? "top-center" : "bottom-right" }
+    { duration: 4500, position: isMobile ? "bottom-center" : "bottom-right" }
   );
 };
 

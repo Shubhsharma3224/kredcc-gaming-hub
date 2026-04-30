@@ -6,79 +6,75 @@
 
 @layer base {
   :root {
-    /* ============ Premium Minimal Light Theme ============
-       Warm off-white canvas, deep navy-indigo primary, refined gold accent.
-       Inspired by Apple, Linear, Stripe — calm, confident, breathable. */
-
-    --background: 0 0% 100%;             /* pure white */
-    --foreground: 230 25% 14%;           /* deep ink navy */
+    --background: 250 40% 98.5%;
+    --foreground: 240 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 230 25% 14%;
+    --card-foreground: 240 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 230 25% 14%;
+    --popover-foreground: 240 25% 10%;
 
-    --primary: 42 92% 52%;               /* premium golden yellow */
-    --primary-foreground: 230 30% 12%;
+    --primary: 252 88% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 42 50% 94%;             /* soft cream */
-    --secondary-foreground: 35 60% 22%;
+    --secondary: 270 65% 96%;
+    --secondary-foreground: 252 70% 28%;
 
-    --muted: 40 30% 95%;
-    --muted-foreground: 35 12% 38%;
+    --muted: 245 25% 96%;
+    --muted-foreground: 240 12% 42%;
 
-    --accent: 38 95% 55%;                /* amber accent */
-    --accent-foreground: 230 30% 12%;
+    --accent: 292 88% 58%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 52%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 25% 88%;
-    --input: 40 25% 92%;
-    --ring: 42 92% 52%;
+    --border: 245 25% 90%;
+    --input: 245 25% 92%;
+    --ring: 252 88% 58%;
 
-    --radius: 1.5rem;
+    --radius: 1.75rem;
 
-    /* Brand gradient stops — warm golden palette */
-    --grad-1: 45 95% 55%;    /* bright golden yellow */
-    --grad-2: 38 92% 52%;    /* amber */
-    --grad-3: 32 88% 50%;    /* warm orange-gold */
-    --grad-4: 50 95% 60%;    /* sunlit yellow */
-    --grad-gold: 42 95% 58%; /* champagne gold accent */
+    /* Brand gradient stops — richer, deeper, more premium */
+    --grad-1: 232 92% 62%;   /* deep indigo */
+    --grad-2: 262 88% 62%;   /* royal violet */
+    --grad-3: 292 90% 60%;   /* vibrant fuchsia */
+    --grad-4: 212 95% 60%;   /* electric blue accent */
+    --grad-gold: 42 95% 58%; /* premium gold */
 
-    --gradient-primary: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)), hsl(var(--grad-3)));
     --gradient-primary-anim: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)), hsl(var(--grad-3)), hsl(var(--grad-1)));
-    --gradient-premium: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-3)), hsl(var(--grad-2)));
-    --gradient-gold: linear-gradient(135deg, hsl(38 75% 62%), hsl(36 65% 50%), hsl(32 60% 45%));
-    --gradient-soft: linear-gradient(135deg, hsl(var(--grad-1) / 0.06), hsl(var(--grad-gold) / 0.06));
-    --gradient-mesh: radial-gradient(at 18% 18%, hsl(var(--grad-1) / 0.10) 0px, transparent 55%),
-                     radial-gradient(at 82% 12%, hsl(var(--grad-gold) / 0.10) 0px, transparent 55%),
-                     radial-gradient(at 8% 82%, hsl(var(--grad-2) / 0.09) 0px, transparent 55%),
-                     radial-gradient(at 78% 78%, hsl(var(--grad-4) / 0.08) 0px, transparent 55%);
+    --gradient-premium: linear-gradient(135deg, hsl(var(--grad-4)), hsl(var(--grad-1)), hsl(var(--grad-2)), hsl(var(--grad-3)));
+    --gradient-gold: linear-gradient(135deg, hsl(42 95% 62%), hsl(38 95% 55%), hsl(30 90% 52%));
+    --gradient-soft: linear-gradient(135deg, hsl(var(--grad-1) / 0.12), hsl(var(--grad-3) / 0.12));
+    --gradient-mesh: radial-gradient(at 20% 20%, hsl(var(--grad-1) / 0.22) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(var(--grad-3) / 0.18) 0px, transparent 50%),
+                     radial-gradient(at 0% 80%, hsl(var(--grad-2) / 0.18) 0px, transparent 50%),
+                     radial-gradient(at 80% 80%, hsl(var(--grad-4) / 0.14) 0px, transparent 50%);
 
-    --shadow-glow: 0 18px 50px -18px hsl(var(--grad-1) / 0.32);
-    --shadow-glow-lg: 0 28px 80px -22px hsl(var(--grad-1) / 0.4);
-    --shadow-glow-gold: 0 18px 50px -18px hsl(var(--grad-gold) / 0.4);
-    --shadow-soft: 0 8px 30px -10px hsl(230 30% 30% / 0.10);
-    --shadow-card: 0 4px 20px -6px hsl(230 25% 25% / 0.06), 0 1px 3px -1px hsl(230 25% 25% / 0.04);
-    --shadow-inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.85);
-    --shadow-premium: 0 18px 60px -22px hsl(var(--grad-1) / 0.28), 0 6px 18px -8px hsl(var(--grad-1) / 0.14), inset 0 1px 0 0 rgba(255,255,255,0.7);
+    --shadow-glow: 0 20px 60px -15px hsl(var(--grad-2) / 0.5);
+    --shadow-glow-lg: 0 30px 90px -20px hsl(var(--grad-2) / 0.6);
+    --shadow-glow-gold: 0 20px 60px -15px hsl(var(--grad-gold) / 0.55);
+    --shadow-soft: 0 10px 40px -12px hsl(var(--grad-1) / 0.28);
+    --shadow-card: 0 10px 40px -10px hsl(245 40% 40% / 0.12), 0 2px 8px -2px hsl(245 40% 40% / 0.06);
+    --shadow-inner-glow: inset 0 1px 0 0 rgba(255,255,255,0.9);
+    --shadow-premium: 0 20px 70px -20px hsl(var(--grad-2) / 0.45), 0 8px 24px -8px hsl(var(--grad-1) / 0.25), inset 0 1px 0 0 rgba(255,255,255,0.8);
 
-    --glass-bg: rgba(255, 253, 250, 0.78);
-    --glass-border: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.65);
 
     --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 230 20% 26%;
-    --sidebar-primary: 42 92% 52%;
-    --sidebar-primary-foreground: 230 30% 12%;
-    --sidebar-accent: 42 50% 94%;
-    --sidebar-accent-foreground: 35 60% 22%;
-    --sidebar-border: 40 25% 88%;
-    --sidebar-ring: 42 92% 52%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -88,9 +84,11 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    letter-spacing: -0.011em;
-    background-image: none;
-    background-color: hsl(var(--background));
+    letter-spacing: -0.01em;
+    background-image:
+      radial-gradient(ellipse at top left, hsl(var(--grad-1) / 0.10), transparent 50%),
+      radial-gradient(ellipse at top right, hsl(var(--grad-4) / 0.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, hsl(var(--grad-3) / 0.10), transparent 50%);
     min-height: 100vh;
   }
 }

@@ -221,30 +221,37 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 10px -2px hsl(var(--grad-gold) / 0.3);
   }
 
-  /* Shine sweep overlay */
+  /* Shine sweep overlay — disabled on mobile to save GPU/battery */
   .shine-overlay { position: relative; overflow: hidden; }
-  .shine-overlay::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 40%;
-    height: 200%;
-    background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
-    transform: rotate(18deg);
-    animation: shine-sweep 4.5s ease-in-out infinite;
-    pointer-events: none;
+  @media (min-width: 768px) {
+    .shine-overlay::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
+      transform: rotate(18deg);
+      animation: shine-sweep 4.5s ease-in-out infinite;
+      pointer-events: none;
+    }
   }
 
-  /* Premium card with subtle 3D tilt on hover */
+  /* Premium card — 3D tilt only on md+ (hover-capable) devices */
   .premium-card {
     @apply glass-strong rounded-[24px] transition-all duration-500;
-    transform-style: preserve-3d;
     will-change: transform;
   }
   .premium-card:hover {
-    transform: perspective(1200px) rotateX(2deg) rotateY(-2deg) translateY(-6px) scale(1.015);
+    transform: translateY(-4px) scale(1.01);
     box-shadow: var(--shadow-premium);
+  }
+  @media (hover: hover) and (min-width: 768px) {
+    .premium-card { transform-style: preserve-3d; }
+    .premium-card:hover {
+      transform: perspective(1200px) rotateX(2deg) rotateY(-2deg) translateY(-6px) scale(1.015);
+    }
   }
 
   /* Animated gradient border */
@@ -325,10 +332,15 @@
   .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(50px);
     opacity: 0.5;
     pointer-events: none;
     will-change: transform;
+    transform: translateZ(0);
+  }
+  /* Only animate blobs on md+ screens — saves significant GPU on mobile */
+  @media (min-width: 768px) {
+    .blob-anim { animation: blob-float 22s ease-in-out infinite; }
   }
 
   .shimmer {
@@ -431,11 +443,12 @@
   50% { box-shadow: 0 0 30px 8px hsl(var(--grad-3) / 0.25); }
 }
 
-/* ============ Game tab + content transitions ============ */
+/* ============ Game tab + content transitions ============
+   Removed `filter: blur()` from keyframes — blur during transitions is
+   the single biggest cause of jank on mobile GPUs. */
 @keyframes tab-enter {
-  0% { opacity: 0; transform: translateY(16px) scale(0.94); filter: blur(4px); }
-  60% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 @keyframes tab-active-glow {
   0%, 100% {
@@ -446,13 +459,13 @@
   }
 }
 @keyframes content-crossfade {
-  0% { opacity: 0; transform: translateY(14px) scale(0.985); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.tab-enter { animation: tab-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.tab-enter { animation: tab-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .tab-active-glow { animation: tab-active-glow 2.6s ease-in-out infinite; }
-.content-crossfade { animation: content-crossfade 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.content-crossfade { animation: content-crossfade 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* ============ Splash screen animations ============ */
 @keyframes splash-out {

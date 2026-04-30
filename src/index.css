@@ -19,33 +19,33 @@
     --popover: 0 0% 100%;
     --popover-foreground: 230 25% 14%;
 
-    --primary: 232 55% 32%;              /* deep midnight indigo */
-    --primary-foreground: 36 40% 98%;
+    --primary: 42 92% 52%;               /* premium golden yellow */
+    --primary-foreground: 230 30% 12%;
 
-    --secondary: 36 25% 94%;             /* warm sand */
-    --secondary-foreground: 232 45% 25%;
+    --secondary: 42 50% 94%;             /* soft cream */
+    --secondary-foreground: 35 60% 22%;
 
-    --muted: 36 20% 95%;
-    --muted-foreground: 230 12% 38%;
+    --muted: 40 30% 95%;
+    --muted-foreground: 35 12% 38%;
 
-    --accent: 38 70% 52%;                /* refined champagne gold */
+    --accent: 38 95% 55%;                /* amber accent */
     --accent-foreground: 230 30% 12%;
 
     --destructive: 0 70% 52%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 230 15% 90%;
-    --input: 230 15% 92%;
-    --ring: 232 55% 32%;
+    --border: 40 25% 88%;
+    --input: 40 25% 92%;
+    --ring: 42 92% 52%;
 
     --radius: 1.5rem;
 
-    /* Brand gradient stops — sophisticated & restrained */
-    --grad-1: 232 55% 32%;   /* midnight indigo */
-    --grad-2: 250 45% 40%;   /* dusty violet */
-    --grad-3: 220 50% 38%;   /* steel blue */
-    --grad-4: 200 45% 50%;   /* soft slate teal */
-    --grad-gold: 38 70% 55%; /* champagne gold */
+    /* Brand gradient stops — warm golden palette */
+    --grad-1: 45 95% 55%;    /* bright golden yellow */
+    --grad-2: 38 92% 52%;    /* amber */
+    --grad-3: 32 88% 50%;    /* warm orange-gold */
+    --grad-4: 50 95% 60%;    /* sunlit yellow */
+    --grad-gold: 42 95% 58%; /* champagne gold accent */
 
     --gradient-primary: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)));
     --gradient-primary-anim: linear-gradient(135deg, hsl(var(--grad-1)), hsl(var(--grad-2)), hsl(var(--grad-3)), hsl(var(--grad-1)));
@@ -73,12 +73,12 @@
 
     --sidebar-background: 36 30% 97.5%;
     --sidebar-foreground: 230 20% 26%;
-    --sidebar-primary: 232 55% 32%;
-    --sidebar-primary-foreground: 36 40% 98%;
-    --sidebar-accent: 36 25% 94%;
-    --sidebar-accent-foreground: 230 25% 18%;
-    --sidebar-border: 230 15% 90%;
-    --sidebar-ring: 232 55% 32%;
+    --sidebar-primary: 42 92% 52%;
+    --sidebar-primary-foreground: 230 30% 12%;
+    --sidebar-accent: 42 50% 94%;
+    --sidebar-accent-foreground: 35 60% 22%;
+    --sidebar-border: 40 25% 88%;
+    --sidebar-ring: 42 92% 52%;
   }
 }
 

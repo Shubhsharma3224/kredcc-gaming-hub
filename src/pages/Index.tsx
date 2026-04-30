@@ -154,6 +154,39 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Quick Guide Video */}
+      <section id="guide" className="container py-10 md:py-14">
+        <Reveal>
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="trust-badge mb-3"><span>🎬</span> Watch & Learn</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-3">
+              Quick <span className="gradient-text">Guide Video</span>
+            </h2>
+            <p className="text-sm md:text-base text-neutral-800 mt-2 md:mt-3">
+              Watch this short walkthrough and learn how to top-up your favourite game in under a minute.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={120}>
+          <div className="mt-6 md:mt-10 max-w-4xl mx-auto">
+            <div className="relative premium-card rounded-[22px] md:rounded-[28px] p-2 md:p-3 overflow-hidden shadow-premium">
+              <div className="relative aspect-video rounded-[18px] md:rounded-[22px] overflow-hidden bg-black">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/9DYLKRquF-4?si=iGCgQRE_yhGTxwd3"
+                  title="KredCC Quick Guide Video"
+                  loading="lazy"
+                  frameBorder={0}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Games Section */}
       <section id="games" className="container pb-12 md:pb-16">
         {/* Tabs */}

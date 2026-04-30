@@ -100,21 +100,14 @@ const Index = () => {
           </div>
 
           {/* Trust badges row */}
-          <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4 gap-y-2 md:gap-y-3 text-[11px] md:text-xs font-semibold text-neutral-800">
-            {[
-              "Instant Delivery",
-              "100% Secure Payment",
-              "24/7 Live Support",
-              "Lowest Prices Guaranteed",
-            ].map((label, i, arr) => (
-              <div key={label} className="contents">
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/70 border border-emerald-500/20 shadow-sm backdrop-blur-sm">
-                  <span className="grid place-items-center w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] font-bold">✓</span>
-                  <span className="text-neutral-800">{label}</span>
-                </div>
-                {i < arr.length - 1 && <div className="w-1 h-1 rounded-full bg-neutral-400/50 hidden sm:block" />}
-              </div>
-            ))}
+          <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 text-[11px] md:text-xs text-popover-foreground">
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> Instant Delivery</div>
+            <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> 100% Secure Payment</div>
+            <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> 24/7 Live Support</div>
+            <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
+            <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> Lowest Prices Guaranteed</div>
           </div>
         </div>
       </section>

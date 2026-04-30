@@ -76,7 +76,7 @@ const Index = () => {
             Premium Top-Ups for <br className="hidden md:block" />
             <span className="gradient-text inline-block sparkle-bg">Every Gamer.</span>
           </h1>
-          <p className="mt-4 md:mt-6 text-sm md:text-lg text-muted-foreground max-w-2xl mx-auto text-balance px-2">
+          <p className="mt-4 md:mt-6 md:text-lg max-w-2xl mx-auto text-balance px-2 text-sidebar-accent-foreground text-neutral-800">
             Instant delivery for WePlay, Jackaroo King, BGMI & Free Fire — at the lowest prices in India.
             Verified, secure and trusted by 50,000+ players.
           </p>
@@ -100,7 +100,7 @@ const Index = () => {
           </div>
 
           {/* Trust badges row */}
-          <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 text-[11px] md:text-xs text-muted-foreground">
+          <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 text-[11px] md:text-xs text-popover-foreground">
             <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> Instant Delivery</div>
             <div className="w-1 h-1 rounded-full bg-border hidden sm:block" />
             <div className="flex items-center gap-1.5"><span className="text-emerald-500 font-bold">✓</span> 100% Secure Payment</div>

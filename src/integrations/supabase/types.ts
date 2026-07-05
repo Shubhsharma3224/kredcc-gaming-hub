@@ -16,27 +16,36 @@ export type Database = {
     Tables: {
       verifications: {
         Row: {
+          action: string
           created_at: string
           game: string
           game_id: string
           id: string
           in_game_name: string | null
+          plan_price: number | null
+          plan_title: string | null
           user_agent: string | null
         }
         Insert: {
+          action?: string
           created_at?: string
           game: string
           game_id: string
           id?: string
           in_game_name?: string | null
+          plan_price?: number | null
+          plan_title?: string | null
           user_agent?: string | null
         }
         Update: {
+          action?: string
           created_at?: string
           game?: string
           game_id?: string
           id?: string
           in_game_name?: string | null
+          plan_price?: number | null
+          plan_title?: string | null
           user_agent?: string | null
         }
         Relationships: []

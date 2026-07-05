@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import Reveal from "./Reveal";
 import { slugify } from "@/lib/products";
+import { supabase } from "@/integrations/supabase/client";
 
 type Props = {
   plan: Plan;
@@ -10,9 +11,10 @@ type Props = {
   verified: boolean;
   index: number;
   game: string;
+  verifiedInfo?: { id: string; name?: string };
 };
 
-const PlanCard = ({ plan, image, verified, index, game }: Props) => {
+const PlanCard = ({ plan, image, verified, index, game, verifiedInfo }: Props) => {
   const slug = `${game}-${slugify(plan.title)}`;
   const productUrl = `/product/${slug}`;
 
@@ -21,7 +23,19 @@ const PlanCard = ({ plan, image, verified, index, game }: Props) => {
       e.preventDefault();
       toast.warning("⚠️ Please verify your ID first");
       document.getElementById("verify")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
     }
+    supabase.from("verifications").insert({
+      game,
+      game_id: verifiedInfo?.id ?? "",
+      in_game_name: verifiedInfo?.name || null,
+      plan_title: plan.title,
+      plan_price: plan.price,
+      action: "buy_click",
+      user_agent: navigator.userAgent.slice(0, 512),
+    }).then(({ error }) => {
+      if (error) console.error("Buy log failed", error);
+    });
   };
 
   return (

@@ -23,6 +23,9 @@ const Index = () => {
   const [verified, setVerified] = useState<Record<GameKey, boolean>>({
     weplay: false, jackaroo: false, bgmi: false, freefire: false,
   });
+  const [verifiedInfo, setVerifiedInfo] = useState<Record<GameKey, { id: string; name?: string }>>({
+    weplay: { id: "" }, jackaroo: { id: "" }, bgmi: { id: "" }, freefire: { id: "" },
+  });
 
   useEffect(() => {
     document.title = "KredCC — India's Fastest Gaming Top-Up | WePlay, BGMI, Free Fire";
@@ -30,6 +33,7 @@ const Index = () => {
 
   const data = GAME_DATA[active];
   const isVerified = verified[active];
+  const activeInfo = verifiedInfo[active];
 
   return (
     <div className="relative min-h-screen">
@@ -219,7 +223,10 @@ const Index = () => {
             <VerifyPanel
               game={active}
               verified={isVerified}
-              onVerify={() => setVerified((v) => ({ ...v, [active]: true }))}
+              onVerify={(info) => {
+                setVerified((v) => ({ ...v, [active]: true }));
+                setVerifiedInfo((vi) => ({ ...vi, [active]: info }));
+              }}
             />
           </div>
 
@@ -235,7 +242,7 @@ const Index = () => {
                 </Reveal>
                 <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {section.plans.map((p, i) => (
-                    <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} game={active} />
+                    <PlanCard key={p.title} plan={p} image={section.image} verified={isVerified} index={i} game={active} verifiedInfo={activeInfo} />
                   ))}
                 </div>
               </div>

@@ -32,7 +32,7 @@ const weplayGold: Plan[] = [
   { title: "10K GOLD CC", desc: "10,000 + 1,000 bonus", price: 479, link: "https://razorpay.me/@fluxfinds?amount=wwXoG29foDWgJuGJgtb%2BRw%3D%3D" },
   { title: "50K GOLD CC", desc: "50,000 + 5,000 bonus + 1 Broad Absolute", price: 1299, link: "https://razorpay.me/@fluxfinds?amount=N6UC2nLxOlAFTrRn0HmYgw%3D%3D" },
   { title: "100K GOLD CC", desc: "1 Lakh + 10,000 bonus + 2 Broad Absolute", price: 2199, link: "https://razorpay.me/@fluxfinds?amount=PJ6ahFrCviFu2k0RR%2FxHaQ%3D%3D", badge: "Best Value" },
-  { title: "250K GOLD CC", desc: "2.5 Lakh + 25,000 bonus + 5 Broad Absolute", price: 4200, link: "https://razorpay.me/@fluxfinds?amount=oh4Guho1gKcvyRP5As1tWg%3D%3D" },
+  { title: "250K GOLD CC", desc: "2.5 Lakh + 25,000 bonus + 5 Broad Absolute", price: 3199, link: "https://razorpay.me/@fluxfinds?amount=hkB0PAAKQ3wClGaaM0JlWQ%3D%3D" },
   { title: "500K GOLD CC", desc: "5 Lakh + 50,000 bonus + 10 Broad Absolute", price: 5999, link: "https://razorpay.me/@fluxfinds?amount=Uj2fVBg%2FvclD1RF0o2z%2BbA%3D%3D", badge: "Mega" },
 ];
 

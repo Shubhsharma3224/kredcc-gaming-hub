@@ -163,26 +163,9 @@ const FlashSale = () => {
               </div>
             </div>
 
-            {/* Countdown */}
-            <div className="flex items-center justify-center gap-1.5 md:gap-3 shrink-0">
-              {[
-                { v: pad(hours), l: "Hrs" },
-                { v: pad(minutes), l: "Min" },
-                { v: pad(seconds), l: "Sec" },
-              ].map((t, i) => (
-                <div key={t.l} className="flex items-center gap-1.5 md:gap-3">
-                  <div className="bg-white/95 backdrop-blur rounded-xl md:rounded-2xl px-2 py-1.5 md:px-4 md:py-2.5 min-w-[42px] md:min-w-[72px] text-center shadow-lg">
-                    <div className="text-lg md:text-3xl font-extrabold tabular-nums leading-none text-rose-600">
-                      {t.v}
-                    </div>
-                    <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-rose-500/80 mt-0.5">
-                      {t.l}
-                    </div>
-                  </div>
-                  {i < 2 && <span className="text-white text-base md:text-3xl font-extrabold animate-pulse">:</span>}
-                </div>
-              ))}
-            </div>
+            {/* Countdown (isolated — only this subtree re-renders every second) */}
+            <Countdown endsAt={state.endsAt} onEnd={handleEnd} />
+
           </div>
 
           {/* Stock progress (full width below on mobile) */}

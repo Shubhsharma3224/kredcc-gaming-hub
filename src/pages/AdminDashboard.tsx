@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { RefreshCcw } from "lucide-react";
 
@@ -27,30 +27,44 @@ const AdminDashboard = () => {
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<"all" | "verify" | "buy_click">("all");
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     setError(null);
+    // Select only the columns the UI actually renders — avoids shipping
+    // large `user_agent` blobs the dashboard never reads.
     const { data, error } = await supabase
       .from("verifications")
-      .select("*")
+      .select("id, game, game_id, in_game_name, plan_title, plan_price, action, created_at")
       .order("created_at", { ascending: false })
       .limit(1000);
     if (error) setError(error.message);
     else setRows((data as Row[]) ?? []);
     setLoading(false);
-  };
+  }, []);
 
   useEffect(() => {
     document.title = "Admin Dashboard — KredCC";
     load();
-  }, []);
+  }, [load]);
 
-  const filtered = rows.filter((r) => filter === "all" || (r.action ?? "verify") === filter);
-  const totalBuys = rows.filter((r) => r.action === "buy_click").length;
-  const totalVerify = rows.filter((r) => (r.action ?? "verify") === "verify").length;
-  const totalRevenue = rows
-    .filter((r) => r.action === "buy_click")
-    .reduce((s, r) => s + Number(r.plan_price ?? 0), 0);
+  // Compute all derived stats in a single pass, memoized on `rows`.
+  const { filtered, totalBuys, totalVerify, totalRevenue } = useMemo(() => {
+    let buys = 0;
+    let verify = 0;
+    let revenue = 0;
+    for (const r of rows) {
+      const action = r.action ?? "verify";
+      if (action === "buy_click") {
+        buys++;
+        revenue += Number(r.plan_price ?? 0);
+      } else if (action === "verify") {
+        verify++;
+      }
+    }
+    const filteredRows =
+      filter === "all" ? rows : rows.filter((r) => (r.action ?? "verify") === filter);
+    return { filtered: filteredRows, totalBuys: buys, totalVerify: verify, totalRevenue: revenue };
+  }, [rows, filter]);
 
   return (
     <div className="min-h-screen bg-neutral-50 p-4 md:p-8">

@@ -98,9 +98,16 @@
       radial-gradient(ellipse at top left, hsl(var(--grad-1) / 0.10), transparent 50%),
       radial-gradient(ellipse at top right, hsl(var(--grad-4) / 0.08), transparent 50%),
       radial-gradient(ellipse at bottom right, hsl(var(--grad-3) / 0.10), transparent 50%);
-    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  /* Global accessible focus ring — visible only for keyboard users */
+  :where(a, button, [role="button"], [role="tab"], input, select, textarea, summary):focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 12px;
   }
 }
+
 
 @layer components {
   /* Glass surfaces — backdrop-blur is expensive on mobile/low-power GPUs.

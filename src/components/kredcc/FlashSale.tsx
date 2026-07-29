@@ -39,24 +39,57 @@ const loadState = (): SaleState => {
 
 const pad = (n: number) => n.toString().padStart(2, "0");
 
-const FlashSale = () => {
-  const [state, setState] = useState<SaleState>(loadState);
-  const [now, setNow] = useState(Date.now());
-
-  // Tick countdown every second
+// Isolated countdown — re-renders every second WITHOUT re-rendering
+// the surrounding shimmer/gradient/progress DOM (which is expensive).
+const Countdown = ({ endsAt, onEnd }: { endsAt: number; onEnd: () => void }) => {
+  const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
-
-  // Reset when timer hits zero
   useEffect(() => {
-    if (state.endsAt - now <= 0) {
+    if (endsAt - now <= 0) onEnd();
+  }, [now, endsAt, onEnd]);
+
+  const remaining = Math.max(0, endsAt - now);
+  const hours = Math.floor(remaining / 3_600_000);
+  const minutes = Math.floor((remaining % 3_600_000) / 60_000);
+  const seconds = Math.floor((remaining % 60_000) / 1000);
+  const parts = [
+    { v: pad(hours), l: "Hrs" },
+    { v: pad(minutes), l: "Min" },
+    { v: pad(seconds), l: "Sec" },
+  ];
+  return (
+    <div className="flex items-center justify-center gap-1.5 md:gap-3 shrink-0">
+      {parts.map((t, i) => (
+        <div key={t.l} className="flex items-center gap-1.5 md:gap-3">
+          <div className="bg-white/95 backdrop-blur rounded-xl md:rounded-2xl px-2 py-1.5 md:px-4 md:py-2.5 min-w-[42px] md:min-w-[72px] text-center shadow-lg">
+            <div className="text-lg md:text-3xl font-extrabold tabular-nums leading-none text-rose-600">
+              {t.v}
+            </div>
+            <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-rose-500/80 mt-0.5">
+              {t.l}
+            </div>
+          </div>
+          {i < 2 && <span className="text-white text-base md:text-3xl font-extrabold animate-pulse">:</span>}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const FlashSale = () => {
+  const [state, setState] = useState<SaleState>(loadState);
+
+  const handleEnd = useMemo(
+    () => () => {
       const fresh = initState();
       setState(fresh);
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh)); } catch {}
-    }
-  }, [now, state.endsAt]);
+    },
+    []
+  );
 
   // Slowly increment sold count for FOMO (every 12-25s)
   useEffect(() => {
@@ -79,13 +112,8 @@ const FlashSale = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const remaining = Math.max(0, state.endsAt - now);
-  const hours = Math.floor(remaining / 3_600_000);
-  const minutes = Math.floor((remaining % 3_600_000) / 60_000);
-  const seconds = Math.floor((remaining % 60_000) / 1000);
-
   const left = Math.max(0, TOTAL_PACKS - state.sold);
-  const percent = useMemo(() => Math.min(100, (state.sold / TOTAL_PACKS) * 100), [state.sold]);
+  const percent = Math.min(100, (state.sold / TOTAL_PACKS) * 100);
   const isLow = left <= 80;
 
   return (

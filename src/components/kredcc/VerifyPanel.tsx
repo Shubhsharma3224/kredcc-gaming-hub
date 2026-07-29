@@ -59,7 +59,8 @@ const VerifyPanel = ({ game, verified, onVerify }: Props) => {
   };
 
   return (
-    <div className="glass-strong rounded-[28px] p-6 md:p-8 shadow-soft relative overflow-hidden">
+    <div className="glass-strong rounded-[28px] p-6 md:p-8 shadow-soft relative overflow-hidden" aria-live="polite">
+
       {confetti && (
         <div className="absolute inset-0 pointer-events-none flex justify-center">
           {Array.from({ length: 18 }).map((_, i) => (
@@ -108,18 +109,22 @@ const VerifyPanel = ({ game, verified, onVerify }: Props) => {
                 onChange={(e) => setId(e.target.value)}
                 placeholder=" "
                 autoComplete="off"
+                inputMode="text"
+                aria-label="Game ID"
+                required
                 className="!pr-12"
               />
               <label htmlFor="game-id">Game ID</label>
               <button
                 type="button"
                 onClick={copyId}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl hover:bg-muted transition"
-                aria-label="Copy ID"
+                className="absolute right-2 top-1/2 -translate-y-1/2 min-w-11 min-h-11 grid place-items-center rounded-xl hover:bg-muted transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                aria-label="Copy Game ID to clipboard"
               >
-                <Copy className="w-4 h-4 text-muted-foreground" />
+                <Copy className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
               </button>
             </div>
+
 
             {needsName && (
               <div className="float-field">
@@ -128,6 +133,9 @@ const VerifyPanel = ({ game, verified, onVerify }: Props) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder=" "
+                  autoComplete="nickname"
+                  aria-label="In-game Name"
+                  required
                 />
                 <label htmlFor="game-name">In-game Name</label>
               </div>
@@ -136,10 +144,12 @@ const VerifyPanel = ({ game, verified, onVerify }: Props) => {
             <button
               type="submit"
               disabled={busy}
-              className="btn-gradient ripple animate-pulse-glow font-semibold py-4 px-8 text-base"
+              aria-busy={busy}
+              className="btn-gradient ripple animate-pulse-glow font-semibold py-4 px-8 text-base min-h-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {busy ? "Verifying..." : "Verify & Unlock Plans"}
             </button>
+
           </form>
         </>
       )}

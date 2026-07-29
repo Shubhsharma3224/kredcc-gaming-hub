@@ -68,10 +68,12 @@ const PlanCard = ({ plan, image, verified, index, game, verifiedInfo }: Props) =
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleBuyClick}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full glass border border-border group-hover:gradient-bg group-hover:text-primary-foreground group-hover:border-transparent group-hover:shadow-glow transition-all duration-300 whitespace-nowrap"
+                aria-label={`Buy ${plan.title} for ₹${plan.price}`}
+                className="text-xs font-semibold px-4 py-2 min-h-11 inline-flex items-center rounded-full glass border border-border group-hover:gradient-bg group-hover:text-primary-foreground group-hover:border-transparent group-hover:shadow-glow transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 Buy Now →
               </a>
+
             </div>
             <Link to={productUrl} className="text-[11px] text-muted-foreground hover:text-primary transition mt-1.5 inline-block story-link">
               View details

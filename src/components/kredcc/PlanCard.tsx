@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import { Plan } from "@/lib/games";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
@@ -14,11 +15,11 @@ type Props = {
   verifiedInfo?: { id: string; name?: string };
 };
 
-const PlanCard = ({ plan, image, verified, index, game, verifiedInfo }: Props) => {
+const PlanCardBase = ({ plan, image, verified, index, game, verifiedInfo }: Props) => {
   const slug = `${game}-${slugify(plan.title)}`;
   const productUrl = `/product/${slug}`;
 
-  const handleBuyClick = (e: React.MouseEvent) => {
+  const handleBuyClick = useCallback((e: React.MouseEvent) => {
     if (!verified) {
       e.preventDefault();
       toast.warning("⚠️ Please verify your ID first");
@@ -36,7 +37,7 @@ const PlanCard = ({ plan, image, verified, index, game, verifiedInfo }: Props) =
     }).then(({ error }) => {
       if (error) console.error("Buy log failed", error);
     });
-  };
+  }, [verified, game, verifiedInfo?.id, verifiedInfo?.name, plan.title, plan.price]);
 
   return (
     <Reveal delay={index * 60}>
@@ -84,4 +85,6 @@ const PlanCard = ({ plan, image, verified, index, game, verifiedInfo }: Props) =
     </Reveal>
   );
 };
+
+const PlanCard = memo(PlanCardBase);
 export default PlanCard;

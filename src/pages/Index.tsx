@@ -36,7 +36,13 @@ const Index = () => {
   const activeInfo = verifiedInfo[active];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-dvh">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-full focus:btn-gradient focus:font-semibold focus:text-sm"
+      >
+        Skip to main content
+      </a>
       <Blobs />
       <LiveVisitors />
       <RecentOrders />
@@ -45,23 +51,26 @@ const Index = () => {
       <header className="sticky top-0 z-40 w-full">
         <div className="container py-3 md:py-4 px-3 sm:px-4">
           <div className="glass-strong rounded-full pl-3 pr-2 py-2 md:px-5 md:py-2.5 flex items-center justify-between gap-2 shadow-card hover:shadow-glow transition-all duration-500">
-            <a href="#top" className="flex items-center gap-2 md:gap-2.5 group min-w-0">
+            <a href="#top" className="flex items-center gap-2 md:gap-2.5 group min-w-0" aria-label="KredCC home">
               <div className="relative shrink-0">
                 <div className="absolute inset-0 gradient-bg rounded-xl blur-md opacity-50 group-hover:opacity-80 transition-opacity" />
-                <img src={IMAGES.logo} alt="KredCC logo" className="relative w-8 h-8 md:w-9 md:h-9 rounded-xl object-cover" />
+                <img src={IMAGES.logo} alt="" aria-hidden="true" className="relative w-8 h-8 md:w-9 md:h-9 rounded-xl object-cover" />
               </div>
               <span className="font-extrabold text-base md:text-lg tracking-tight truncate">Kred<span className="gradient-text">CC</span></span>
             </a>
-            <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
+            <nav aria-label="Primary" className="hidden md:flex items-center gap-7 text-sm font-medium">
               <a href="#games" className="hover:text-primary transition story-link">Games</a>
               <a href="#trust" className="hover:text-primary transition story-link">Why Us</a>
               <a href="#reviews" className="hover:text-primary transition story-link">Reviews</a>
               <a href="#faq" className="hover:text-primary transition story-link">FAQ</a>
             </nav>
-            <a href="#games" className="btn-gradient ripple text-xs md:text-sm font-semibold px-3.5 py-2 md:px-5 md:py-2.5 shrink-0 whitespace-nowrap">Top-Up</a>
+            <a href="#games" className="btn-gradient ripple text-xs md:text-sm font-semibold px-3.5 py-2 md:px-5 md:py-2.5 shrink-0 whitespace-nowrap min-h-11 inline-flex items-center">Top-Up</a>
           </div>
         </div>
       </header>
+
+      <main id="main">
+
 
       {/* Flash Sale Bar */}
       <FlashSale />
@@ -80,13 +89,15 @@ const Index = () => {
             Premium Top-Ups for <br className="hidden md:block" />
             <span className="gradient-text inline-block sparkle-bg">Every Gamer.</span>
           </h1>
-          <p className="mt-4 md:mt-6 md:text-lg max-w-2xl mx-auto text-balance px-2 text-sidebar-accent-foreground text-neutral-800">
+          <p className="mt-4 md:mt-6 md:text-lg max-w-2xl mx-auto text-balance px-2 text-foreground/80">
             Instant delivery for WePlay, Jackaroo King, BGMI & Free Fire — at the lowest prices in India.
             Verified, secure and trusted by 50,000+ players.
           </p>
+
           <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-2.5 md:gap-3">
-            <a href="#games" className="btn-gradient ripple shine-overlay font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base">⚡ Start Top-Up</a>
-            <a href="#reviews" className="glass-strong rounded-full font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base hover:scale-105 hover:shadow-glow transition-all duration-300">⭐ See Reviews</a>
+            <a href="#games" className="btn-gradient ripple shine-overlay font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base min-h-11 inline-flex items-center">⚡ Start Top-Up</a>
+            <a href="#reviews" className="glass-strong rounded-full font-semibold px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base hover:scale-105 hover:shadow-glow transition-all duration-300 min-h-11 inline-flex items-center">⭐ See Reviews</a>
+
           </div>
 
           {/* Premium trust row */}
@@ -104,22 +115,20 @@ const Index = () => {
           </div>
 
           {/* Trust badges row */}
-          <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4 gap-y-2 md:gap-y-3 text-[11px] md:text-xs font-semibold text-neutral-800">
+          <ul className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4 gap-y-2 md:gap-y-3 text-[11px] md:text-xs font-semibold text-foreground/85 list-none p-0">
             {[
               "Instant Delivery",
               "100% Secure Payment",
               "24/7 Live Support",
               "Lowest Prices Guaranteed",
-            ].map((label, i, arr) => (
-              <div key={label} className="contents">
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/70 border border-emerald-500/20 shadow-sm backdrop-blur-sm">
-                  <span className="grid place-items-center w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] font-bold">✓</span>
-                  <span className="text-neutral-800">{label}</span>
-                </div>
-                {i < arr.length - 1 && <div className="w-1 h-1 rounded-full bg-neutral-400/50 hidden sm:block" />}
-              </div>
+            ].map((label) => (
+              <li key={label} className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/70 border border-emerald-500/20 shadow-sm backdrop-blur-sm">
+                <span aria-hidden="true" className="grid place-items-center w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] font-bold">✓</span>
+                <span>{label}</span>
+              </li>
             ))}
-          </div>
+          </ul>
+
         </div>
       </section>
 
@@ -166,9 +175,10 @@ const Index = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-3">
               Quick <span className="gradient-text">Guide Video</span>
             </h2>
-            <p className="text-sm md:text-base text-neutral-800 mt-2 md:mt-3">
+            <p className="text-sm md:text-base text-foreground/80 mt-2 md:mt-3">
               Watch this short walkthrough and learn how to top-up your favourite game in under a minute.
             </p>
+
           </div>
         </Reveal>
         <Reveal delay={120}>
@@ -194,7 +204,7 @@ const Index = () => {
       {/* Games Section */}
       <section id="games" className="container pb-12 md:pb-16">
         {/* Tabs */}
-        <div className="flex gap-2 md:gap-3 overflow-x-auto pb-3 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center scrollbar-none snap-x snap-mandatory">
+        <div role="tablist" aria-label="Choose game" className="flex gap-2 md:gap-3 overflow-x-auto pb-3 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center scrollbar-none snap-x snap-mandatory">
           {TABS.map((t, i) => {
             const isActive = active === t.key;
             return (
@@ -202,19 +212,22 @@ const Index = () => {
                 key={t.key}
                 onClick={() => setActive(t.key)}
                 style={{ animationDelay: `${i * 110}ms` }}
-                className={`tab-enter shrink-0 snap-start flex items-center gap-2 md:gap-3 px-3.5 py-2.5 md:px-5 md:py-3 rounded-full font-semibold text-xs md:text-sm ripple transition-all duration-500 ease-out ${
+                className={`tab-enter shrink-0 snap-start flex items-center gap-2 md:gap-3 px-3.5 py-2.5 md:px-5 md:py-3 rounded-full font-semibold text-xs md:text-sm ripple transition-all duration-500 ease-out min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                   isActive
                     ? "btn-gradient scale-105 tab-active-glow"
                     : "glass hover:scale-105 hover:shadow-soft"
                 }`}
-                aria-pressed={isActive}
+                role="tab"
+                aria-selected={isActive}
+                aria-label={`Select ${t.name}`}
               >
-                <img src={t.logo} alt={t.name} className={`w-6 h-6 md:w-7 md:h-7 rounded-lg object-cover transition-transform duration-500 ${isActive ? "scale-110" : ""}`} />
+                <img src={t.logo} alt="" aria-hidden="true" className={`w-6 h-6 md:w-7 md:h-7 rounded-lg object-cover transition-transform duration-500 ${isActive ? "scale-110" : ""}`} />
                 <span>{t.name}</span>
               </button>
             );
           })}
         </div>
+
 
         {/* Cross-fade content wrapper — keyed on active game */}
         <div key={active} className="content-crossfade">
@@ -310,7 +323,10 @@ const Index = () => {
         </Reveal>
       </section>
 
+      </main>
+
       {/* Footer */}
+
       <footer className="container py-10 md:py-12 pb-24 md:pb-12">
         <div className="glass-strong rounded-[24px] md:rounded-[28px] p-6 md:p-10 shadow-card">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-6">

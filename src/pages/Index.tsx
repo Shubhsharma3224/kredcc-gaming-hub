@@ -187,7 +187,7 @@ const Index = () => {
               <div className="relative aspect-video rounded-[18px] md:rounded-[22px] overflow-hidden bg-black">
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/9DYLKRquF-4?si=iGCgQRE_yhGTxwd3"
+                  src="https://www.youtube.com/embed/HmUCGgfNFDg?si=a7X3UqHTo0JHV1hM"
                   title="KredCC Quick Guide Video"
                   loading="lazy"
                   frameBorder={0}

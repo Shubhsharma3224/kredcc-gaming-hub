@@ -17,6 +17,7 @@ const About = lazy(() => import("./pages/About.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 const Product = lazy(() => import("./pages/Product.tsx"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard.tsx"));
+const AdminKredcc = lazy(() => import("./pages/AdminKredcc.tsx"));
 
 const queryClient = new QueryClient({
   defaultOptions: {

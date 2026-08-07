@@ -288,6 +288,14 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Proof of delivery */}
+      <ProofSection />
+
+      {/* Order tracker */}
+      <OrderTracker />
+
+
+
       {/* Reviews */}
       <section id="reviews" className="container py-12 md:py-16">
         <Reveal>

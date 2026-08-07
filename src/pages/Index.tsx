@@ -88,7 +88,7 @@ const Index = () => {
               <a href="#faq" className="hover:text-primary transition story-link">FAQ</a>
             </nav>
             <div className="flex items-center gap-2 shrink-0">
-              {loggedIn && <ProfileMenu session={session} onLogout={logout} />}
+              {loggedIn && <ProfileMenu session={session} activeGame={active} onLogout={logout} />}
               <a href="#games" className="btn-gradient ripple text-xs md:text-sm font-semibold px-3.5 py-2 md:px-5 md:py-2.5 shrink-0 whitespace-nowrap min-h-11 inline-flex items-center">Top-Up</a>
             </div>
           </div>

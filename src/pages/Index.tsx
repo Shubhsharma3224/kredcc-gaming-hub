@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Star, Zap, ShieldCheck, Headphones, RefreshCcw, ChevronDown, Mail, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import Blobs from "@/components/kredcc/Blobs";
@@ -9,7 +9,12 @@ import PlanCard from "@/components/kredcc/PlanCard";
 import LiveVisitors from "@/components/kredcc/LiveVisitors";
 import RecentOrders from "@/components/kredcc/RecentOrders";
 import FlashSale from "@/components/kredcc/FlashSale";
+import ProofSection from "@/components/kredcc/ProofSection";
+import OrderTracker from "@/components/kredcc/OrderTracker";
+import ProfileMenu from "@/components/kredcc/ProfileMenu";
+import VerifyOverlay from "@/components/kredcc/VerifyOverlay";
 import { GAME_DATA, GameKey, IMAGES, REVIEWS, TABS } from "@/lib/games";
+import { clearSession, loadSession, saveSession, SessionState, touchSession } from "@/lib/session";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQS = [
@@ -20,23 +25,44 @@ const FAQS = [
 
 const Index = () => {
   const [active, setActive] = useState<GameKey>("weplay");
-  const [verified, setVerified] = useState<Record<GameKey, boolean>>({
-    weplay: false, jackaroo: false, bgmi: false, freefire: false,
-  });
-  const [verifiedInfo, setVerifiedInfo] = useState<Record<GameKey, { id: string; name?: string }>>({
-    weplay: { id: "" }, jackaroo: { id: "" }, bgmi: { id: "" }, freefire: { id: "" },
-  });
+  const [session, setSession] = useState<SessionState>(() => touchSession(loadSession()));
+  const [showOverlay, setShowOverlay] = useState(() => Object.keys(loadSession()).length === 0);
 
   useEffect(() => {
     document.title = "KredCC — India's Fastest Gaming Top-Up | WePlay, BGMI, Free Fire";
   }, []);
 
+  const handleVerify = (game: GameKey, info: { id: string; name?: string }) => {
+    setSession((s) => {
+      const next: SessionState = { ...s, [game]: { ...info, lastSeen: Date.now() } };
+      saveSession(next);
+      return next;
+    });
+    setActive(game);
+    setShowOverlay(false);
+  };
+
+  const logout = () => {
+    clearSession();
+    setSession({});
+    setShowOverlay(true);
+  };
+
   const data = GAME_DATA[active];
-  const isVerified = verified[active];
-  const activeInfo = verifiedInfo[active];
+  const account = session[active];
+  const isVerified = Boolean(account);
+  const activeInfo = useMemo(
+    () => (account ? { id: account.id, name: account.name } : { id: "" }),
+    [account?.id, account?.name]
+  );
+  const loggedIn = Object.keys(session).length > 0;
+
 
   return (
     <div className="relative min-h-dvh">
+      {showOverlay && (
+        <VerifyOverlay onVerify={handleVerify} onClose={() => setShowOverlay(false)} />
+      )}
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-full focus:btn-gradient focus:font-semibold focus:text-sm"
@@ -64,7 +90,10 @@ const Index = () => {
               <a href="#reviews" className="hover:text-primary transition story-link">Reviews</a>
               <a href="#faq" className="hover:text-primary transition story-link">FAQ</a>
             </nav>
-            <a href="#games" className="btn-gradient ripple text-xs md:text-sm font-semibold px-3.5 py-2 md:px-5 md:py-2.5 shrink-0 whitespace-nowrap min-h-11 inline-flex items-center">Top-Up</a>
+            <div className="flex items-center gap-2 shrink-0">
+              {loggedIn && <ProfileMenu session={session} activeGame={active} onLogout={logout} />}
+              <a href="#games" className="btn-gradient ripple text-xs md:text-sm font-semibold px-3.5 py-2 md:px-5 md:py-2.5 shrink-0 whitespace-nowrap min-h-11 inline-flex items-center">Top-Up</a>
+            </div>
           </div>
         </div>
       </header>
@@ -236,11 +265,9 @@ const Index = () => {
             <VerifyPanel
               game={active}
               verified={isVerified}
-              onVerify={(info) => {
-                setVerified((v) => ({ ...v, [active]: true }));
-                setVerifiedInfo((vi) => ({ ...vi, [active]: info }));
-              }}
+              onVerify={(info) => handleVerify(active, info)}
             />
+
           </div>
 
           {/* Plan Sections */}
@@ -263,6 +290,14 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Proof of delivery */}
+      <ProofSection />
+
+      {/* Order tracker */}
+      <OrderTracker />
+
+
 
       {/* Reviews */}
       <section id="reviews" className="container py-12 md:py-16">

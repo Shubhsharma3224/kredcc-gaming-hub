@@ -17,6 +17,7 @@ const About = lazy(() => import("./pages/About.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 const Product = lazy(() => import("./pages/Product.tsx"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard.tsx"));
+const AdminKredcc = lazy(() => import("./pages/AdminKredcc.tsx"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/product/:slug" element={<Product />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-kredcc" element={<AdminKredcc />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

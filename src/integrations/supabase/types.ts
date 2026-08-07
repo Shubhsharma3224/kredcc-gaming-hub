@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      orders: {
+        Row: {
+          created_at: string
+          game: string
+          game_id: string
+          id: string
+          in_game_name: string | null
+          order_code: string
+          payment_method: string
+          plan_price: number
+          plan_title: string
+          status: string
+          transaction_id: string
+          updated_at: string
+          upi_id_used: string | null
+        }
+        Insert: {
+          created_at?: string
+          game: string
+          game_id: string
+          id?: string
+          in_game_name?: string | null
+          order_code?: string
+          payment_method?: string
+          plan_price?: number
+          plan_title: string
+          status?: string
+          transaction_id: string
+          updated_at?: string
+          upi_id_used?: string | null
+        }
+        Update: {
+          created_at?: string
+          game?: string
+          game_id?: string
+          id?: string
+          in_game_name?: string | null
+          order_code?: string
+          payment_method?: string
+          plan_price?: number
+          plan_title?: string
+          status?: string
+          transaction_id?: string
+          updated_at?: string
+          upi_id_used?: string | null
+        }
+        Relationships: []
+      }
       verifications: {
         Row: {
           action: string

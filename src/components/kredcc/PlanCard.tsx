@@ -1,31 +1,34 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useState } from "react";
 import { Plan } from "@/lib/games";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import Reveal from "./Reveal";
 import { slugify } from "@/lib/products";
 import { supabase } from "@/integrations/supabase/client";
+import PaymentModal from "./PaymentModal";
+import type { GameKey } from "@/lib/games";
 
 type Props = {
   plan: Plan;
   image: string;
   verified: boolean;
   index: number;
-  game: string;
+  game: GameKey;
   verifiedInfo?: { id: string; name?: string };
 };
 
 const PlanCardBase = ({ plan, image, verified, index, game, verifiedInfo }: Props) => {
   const slug = `${game}-${slugify(plan.title)}`;
   const productUrl = `/product/${slug}`;
+  const [payOpen, setPayOpen] = useState(false);
 
-  const handleBuyClick = useCallback((e: React.MouseEvent) => {
+  const handleBuyClick = useCallback(() => {
     if (!verified) {
-      e.preventDefault();
       toast.warning("⚠️ Please verify your ID first");
       document.getElementById("verify")?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
+    setPayOpen(true);
     supabase.from("verifications").insert({
       game,
       game_id: verifiedInfo?.id ?? "",
@@ -64,17 +67,14 @@ const PlanCardBase = ({ plan, image, verified, index, game, verifiedInfo }: Prop
             </Link>
             <div className="mt-2.5 md:mt-3 flex items-center justify-between gap-2">
               <span className="text-xl md:text-2xl font-extrabold gradient-text tabular-nums">₹{plan.price}</span>
-              <a
-                href={plan.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
                 onClick={handleBuyClick}
                 aria-label={`Buy ${plan.title} for ₹${plan.price}`}
                 className="text-xs font-semibold px-4 py-2 min-h-11 inline-flex items-center rounded-full glass border border-border group-hover:gradient-bg group-hover:text-primary-foreground group-hover:border-transparent group-hover:shadow-glow transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 Buy Now →
-              </a>
-
+              </button>
             </div>
             <Link to={productUrl} className="text-[11px] text-muted-foreground hover:text-primary transition mt-1.5 inline-block story-link">
               View details
@@ -82,6 +82,15 @@ const PlanCardBase = ({ plan, image, verified, index, game, verifiedInfo }: Prop
           </div>
         </div>
       </div>
+      {payOpen && verifiedInfo && (
+        <PaymentModal
+          open={payOpen}
+          onOpenChange={setPayOpen}
+          plan={plan}
+          game={game}
+          account={verifiedInfo}
+        />
+      )}
     </Reveal>
   );
 };

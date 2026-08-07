@@ -46,6 +46,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/product/:slug" element={<Product />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-kredcc" element={<AdminKredcc />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
